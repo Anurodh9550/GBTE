@@ -21,7 +21,7 @@ export function Logo({ className, light = false }: { className?: string; light?:
       </span>
       <span className="flex min-w-0 flex-col leading-tight">
         <span className={cn("text-lg font-bold tracking-tight", light ? "text-white" : "text-navy")}>
-          GBTE
+          GBET
         </span>
         <span
           className={cn(

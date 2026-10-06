@@ -105,9 +105,17 @@ export function Header() {
               <Phone className="size-3.5" aria-hidden />
               {SITE.phone}
             </a>
-            <a href={`mailto:${SITE.email}`} className="hidden items-center gap-1.5 sm:inline-flex hover:text-white/80">
-              <Mail className="size-3.5" aria-hidden />
-              {SITE.email}
+            <a
+              href={`mailto:${SITE.email}`}
+              className="hidden items-center gap-2 sm:inline-flex hover:text-white/80"
+              dir="ltr"
+            >
+              <Mail className="size-3.5 shrink-0" aria-hidden />
+              <span className="whitespace-nowrap [font-variant-ligatures:none]">
+                {SITE.email.split("@")[0]}
+                <span className="mx-px">@</span>
+                {SITE.email.split("@")[1]}
+              </span>
             </a>
           </div>
           <div className="flex items-center gap-3">
@@ -238,7 +246,7 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[min(100%,20rem)] overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle>GBTE</SheetTitle>
+                  <SheetTitle>GBET</SheetTitle>
                 </SheetHeader>
                 <nav className="mt-4 grid gap-1">
                   {NAV.map((item) =>

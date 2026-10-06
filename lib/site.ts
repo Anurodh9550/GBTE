@@ -1,6 +1,6 @@
 export const SITE = {
-  name: "GBTE",
-  shortName: "GBTE",
+  name: "GBET",
+  shortName: "GBET",
   fullName: "Gautam Buddha Technical Education Group",
   trust: "Gautam Buddha Educational Trust",
   tagline: "Transform Your Future Through Quality Education",
@@ -8,7 +8,7 @@ export const SITE = {
   url: "https://gbte.in",
   phone: "+91 9355470710",
   phoneTel: "+919355470710",
-  email: "admission@gbte.in",
+  email: "admission@gbedutrust.com",
   whatsapp: "919355470710",
   year: "2027",
 } as const;

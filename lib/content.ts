@@ -358,6 +358,11 @@ export const SCHOLARSHIPS = [
     amountHi: "ट्यूशन का 50% तक",
     detail: "Awarded on 10+2 / graduation scores and entrance performance.",
     detailHi: "10+2 / स्नातक अंक और प्रवेश प्रदर्शन पर।",
+    eligibility: "Strong board or graduation marks on a diploma, degree or certificate file.",
+    eligibilityHi: "डिप्लोमा, डिग्री या सर्टिफिकेट फाइल पर अच्छे बोर्ड या स्नातक अंक।",
+    docs: "Class 10 and 12 marksheets; graduation marksheet if applying for a degree.",
+    docsHi: "कक्षा 10 और 12 की मार्कशीट; डिग्री के लिए स्नातक मार्कशीट।",
+    image: "/photos/classroom.jpg",
   },
   {
     slug: "girl-child",
@@ -367,6 +372,11 @@ export const SCHOLARSHIPS = [
     amountHi: "विशेष शुल्क छूट",
     detail: "Encouraging women in pharmacy, education and paramedical diplomas.",
     detailHi: "फार्मेसी, शिक्षा और पैरामेडिकल डिप्लोमा में महिलाओं को प्रोत्साहन।",
+    eligibility: "Women applicants on pharmacy, education, paramedical, design and AI pathways.",
+    eligibilityHi: "फार्मेसी, शिक्षा, पैरामेडिकल, डिज़ाइन और एआई मार्ग पर महिला आवेदक।",
+    docs: "ID proof and the same academic papers as the admission file.",
+    docsHi: "आईडी प्रमाण और प्रवेश फाइल जैसे शैक्षणिक कागज़।",
+    image: "/photos/education.jpg",
   },
   {
     slug: "sports",
@@ -376,6 +386,11 @@ export const SCHOLARSHIPS = [
     amountHi: "प्रदर्शन आधारित",
     detail: "For state, national and university-level sportspersons.",
     detailHi: "राज्य, राष्ट्रीय और विश्वविद्यालय स्तर के खिलाड़ियों के लिए।",
+    eligibility: "State, national or university sporting credentials, still in date.",
+    eligibilityHi: "राज्य, राष्ट्रीय या विश्वविद्यालय खेल प्रमाण, वैध अवधि में।",
+    docs: "Federation or university certificate, plus ID and marksheets.",
+    docsHi: "फेडरेशन या विश्वविद्यालय प्रमाण, साथ में आईडी और मार्कशीट।",
+    image: "/photos/sports.jpg",
   },
   {
     slug: "ews",
@@ -385,6 +400,11 @@ export const SCHOLARSHIPS = [
     amountHi: "आवश्यकता आधारित सहायता",
     detail: "Income-linked support with transparent documentation.",
     detailHi: "पारदर्शी दस्तावेज़ीकरण के साथ आय-आधारित सहायता।",
+    eligibility: "Valid income / EWS certificate as notified for the session.",
+    eligibilityHi: "सत्र के लिए अधिसूचित वैध आय / ईडब्ल्यूएस प्रमाण।",
+    docs: "Income or EWS certificate, ID, and the admission marksheets.",
+    docsHi: "आय या ईडब्ल्यूएस प्रमाण, आईडी, और प्रवेश मार्कशीट।",
+    image: "/photos/campus-jalaun.jpg",
   },
 ] as const;
 
@@ -576,7 +596,7 @@ export const CHATBOT_KB = [
   { keys: ["placement", "job", "प्लेसमेंट"], answer: "We provide 95% placement support with 100+ hiring partners including TCS, Wipro, HCL, Infosys, Apollo, Fortis and Medanta.", answerHi: "टीसीएस, विप्रो, एचसीएल, इंफोसिस, अपोलो, फोर्टिस और मेदांता सहित 100+ भागीदारों के साथ 95% प्लेसमेंट सहायता।" },
   { keys: ["scholarship", "छात्रवृत्ति"], answer: "Merit, girl child, sports and EWS scholarships are open. Upload documents with your application.", answerHi: "मेरिट, बालिका, खेल और ईडब्ल्यूएस छात्रवृत्ति खुली हैं।" },
   { keys: ["pharmacy", "pharma", "फार्मा", "diploma", "डिप्लोमा", "fashion", "interior", "culinary", "ai", "chatgpt", "machine"], answer: "GBTE AI diplomas: Artificial Intelligence, Generative AI, Data Science & AI, Machine Learning and AI Chatbots — plus design, culinary, pharmacy and paramedical diplomas.", answerHi: "जीबीटीई एआई डिप्लोमा: आर्टिफिशियल इंटेलिजेंस, जनरेटिव एआई, डेटा साइंस, मशीन लर्निंग और एआई चैटबॉट — साथ में डिज़ाइन, कलिनरी, फार्मेसी और पैरामेडिकल।" },
-  { keys: ["contact", "phone", "whatsapp", "संपर्क"], answer: "Call or WhatsApp +91 9355470710 or email admission@gbte.in. Campus: C-77, Sector 63A, Noida.", answerHi: "कॉल/व्हाट्सएप +91 9355470710 या admission@gbte.in। परिसर: सी-77, सेक्टर 63ए, नोएडा।" },
+  { keys: ["contact", "phone", "whatsapp", "संपर्क"], answer: "Call or WhatsApp +91 9355470710 or email admission@gbedutrust.com. Campus: C-77, Sector 63A, Noida.", answerHi: "कॉल/व्हाट्सएप +91 9355470710 या admission@gbedutrust.com। परिसर: सी-77, सेक्टर 63ए, नोएडा।" },
   { keys: ["noida", "campus", "परिसर"], answer: "Noida campus: C-77, Sector 63A, Noida, Uttar Pradesh.", answerHi: "नोएडा परिसर: सी-77, सेक्टर 63ए, नोएडा, उत्तर प्रदेश।" },
 ] as const;
 
@@ -584,7 +604,7 @@ export const LEADERSHIP = [
   {
     role: "Chairman",
     roleHi: "अध्यक्ष",
-    name: "Dr. Suresh Gautam",
+    name: "-----",
     message:
       "GBTE exists to make rigorous, ethical and employable education reachable for every deserving student in India.",
     messageHi:
@@ -593,7 +613,7 @@ export const LEADERSHIP = [
   {
     role: "Director",
     roleHi: "निदेशक",
-    name: "Prof. Meera Kapoor",
+    name: "-------",
     message:
       "Our classrooms, labs and placement cell work as one system — so diploma holders leave job-ready, not just certificate-ready.",
     messageHi:

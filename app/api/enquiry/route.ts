@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     receivedAt: new Date().toISOString(),
     crm: {
       pipeline: "admissions-2027",
-      owner: "admission@gbte.in",
+      owner: "admission@gbedutrust.com",
       channels: ["email", "whatsapp", "crm"],
     },
   };

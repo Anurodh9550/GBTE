@@ -67,7 +67,7 @@ export function EnquiryForm({ compact = false, defaultCourse }: { compact?: bool
             <SectionHeading className="text-left mx-0" title={t.enquiry.title} subtitle={t.enquiry.subtitle} eyebrow="Lead desk" />
             <ul className="mt-8 space-y-3 text-sm text-slate-600">
               <li>WhatsApp API handoff to +91 9355470710</li>
-              <li>Email notification to admission@gbte.in</li>
+              <li>Email notification to admission@gbedutrust.com</li>
               <li>CRM-ready JSON payload stored for the admissions desk</li>
             </ul>
           </div>
