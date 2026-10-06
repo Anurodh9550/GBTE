@@ -76,4 +76,6 @@ export const HIRING_COMPANIES = [
   "Cipla",
   "Sun Pharma",
   "Deloitte",
+  "Kendriya Vidyalaya",
+  "UP Govt. School",
 ] as const;

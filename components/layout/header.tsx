@@ -41,8 +41,6 @@ const NAV_LINK =
 
 const NAV = [
   { href: "/about", key: "about" as const, about: true },
-  { href: "/admissions", key: "admissions" as const },
-  { href: "/campus", key: "campus" as const },
   { href: "/courses", key: "courses" as const, mega: true },
   { href: "/news", key: "news" as const },
   { href: "/placements", key: "placements" as const },
@@ -54,7 +52,7 @@ const ABOUT_DROPDOWN = [
   { href: "/about#overview", label: "Overview", labelHi: "परिचय" },
   { href: "/about#leadership", label: "Leadership", labelHi: "नेतृत्व" },
   { href: "/campus", label: "Campus", labelHi: "परिसर" },
-  { href: "/placements", label: "Success Stories", labelHi: "सफलता कथाएँ" },
+  { href: "/success-stories", label: "Success Stories", labelHi: "सफलता कथाएँ" },
   { href: "/admissions", label: "Admissions", labelHi: "प्रवेश" },
 ] as const;
 

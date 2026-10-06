@@ -138,23 +138,22 @@ export function AboutView() {
 
       <section id="campus" className="scroll-mt-28 bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight text-navy">
+          <p className="text-xs font-semibold tracking-[0.22em] text-brand uppercase">
             {locale === "hi" ? "परिसर" : "Campus"}
+          </p>
+          <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-navy">
+            {locale === "hi" ? "नोएडा मुख्यालय — सेक्टर 63ए" : "Noida headquarters — Sector 63A"}
           </h2>
-          <div className="mt-8 grid gap-4 md:max-w-xl">
-            {CAMPUSES.map((c) => (
-              <article key={c.id} className="overflow-hidden rounded-2xl border border-[#eedfd0] bg-cream">
-                <div className="relative h-52">
-                  <Image src={c.image} alt={c.name} fill className="object-cover" sizes="(max-width:768px) 100vw, 50vw" />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-navy">{locale === "hi" ? c.nameHi : c.name}</h3>
-                  <p className="mt-1 text-sm text-brand">{c.role}</p>
-                  <p className="mt-3 text-sm text-stone-600">{c.address}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <p className="mt-4 max-w-xl text-sm leading-7 text-stone-600">
+            {CAMPUSES[0].address}
+          </p>
+          <Link
+            href="/campus"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
+          >
+            {locale === "hi" ? "पूरा परिसर देखें" : "Explore the campus"}
+            <ArrowRight className="size-4" />
+          </Link>
         </div>
       </section>
 

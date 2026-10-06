@@ -35,6 +35,14 @@ export const defaultMetadata: Metadata = {
   authors: [{ name: SITE.fullName }],
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    apple: "/logo.png",
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -43,11 +51,13 @@ export const defaultMetadata: Metadata = {
     siteName: SITE.fullName,
     title: defaultTitle,
     description: defaultDescription,
+    images: [{ url: "/logo.png", width: 500, height: 500, alt: SITE.trust }],
   },
   twitter: {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
+    images: ["/logo.png"],
   },
 };
 

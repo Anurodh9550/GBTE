@@ -13,6 +13,7 @@ import { useI18n } from "@/components/providers/language-provider";
 import { COURSES } from "@/lib/courses";
 import { INDIAN_STATES } from "@/lib/site";
 import { enquiryWhatsappMessage, whatsappLink } from "@/lib/whatsapp";
+import { cn } from "@/lib/utils";
 
 const schema = z.object({
   fullName: z.string().min(2),
@@ -56,7 +57,7 @@ export function EnquiryForm({ compact = false, defaultCourse }: { compact?: bool
     form.reset();
   }
 
-  const fieldClass = "h-11";
+  const fieldClass = "h-11 w-full min-w-0";
 
   return (
     <section id="enquiry" className={compact ? "" : "py-16 sm:py-20"}>
@@ -71,52 +72,52 @@ export function EnquiryForm({ compact = false, defaultCourse }: { compact?: bool
             </ul>
           </div>
         ) : null}
-        <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 rounded-2xl border bg-white p-6 shadow-sm">
+        <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid min-w-0 gap-4 rounded-2xl border bg-white p-6 shadow-sm", compact && "w-full p-5 sm:p-6")}>
           {compact ? <h2 className="text-xl font-bold text-navy">{t.enquiry.title}</h2> : null}
-          <div className="grid gap-1.5">
+          <div className="grid min-w-0 gap-1.5">
             <Label htmlFor="fullName">{t.enquiry.name}</Label>
             <Input id="fullName" className={fieldClass} autoComplete="name" {...form.register("fullName")} />
             {form.formState.errors.fullName ? <p className="text-xs text-destructive">Enter your full name.</p> : null}
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="grid gap-1.5">
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-1.5">
               <Label htmlFor="mobile">{t.enquiry.mobile}</Label>
               <Input id="mobile" className={fieldClass} inputMode="numeric" autoComplete="tel" {...form.register("mobile")} />
               {form.formState.errors.mobile ? <p className="text-xs text-destructive">Enter a 10-digit mobile number.</p> : null}
             </div>
-            <div className="grid gap-1.5">
+            <div className="grid min-w-0 gap-1.5">
               <Label htmlFor="email">{t.enquiry.email}</Label>
               <Input id="email" type="email" className={fieldClass} autoComplete="email" {...form.register("email")} />
               {form.formState.errors.email ? <p className="text-xs text-destructive">Enter a valid email.</p> : null}
             </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="grid gap-1.5">
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-1.5">
               <Label htmlFor="state">{t.enquiry.state}</Label>
-              <select id="state" className="h-11 rounded-lg border border-input bg-transparent px-2.5 text-sm" {...form.register("state")}>
+              <select id="state" className="h-11 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 text-sm" {...form.register("state")}>
                 {INDIAN_STATES.map((s) => (
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>
             </div>
-            <div className="grid gap-1.5">
+            <div className="grid min-w-0 gap-1.5">
               <Label htmlFor="city">{t.enquiry.city}</Label>
-              <Input id="city" className={fieldClass} {...form.register("city")} />
+              <Input id="city" className={fieldClass} placeholder={locale === "hi" ? "शहर" : "City"} {...form.register("city")} />
             </div>
           </div>
-          <div className="grid gap-1.5">
+          <div className="grid min-w-0 gap-1.5">
             <Label htmlFor="course">{t.enquiry.course}</Label>
-            <select id="course" className="h-11 rounded-lg border border-input bg-transparent px-2.5 text-sm" {...form.register("course")}>
+            <select id="course" className="h-11 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 text-sm" {...form.register("course")}>
               {COURSES.map((c) => (
                 <option key={c.slug} value={c.name}>{locale === "hi" ? c.nameHi : c.name}</option>
               ))}
             </select>
           </div>
-          <div className="grid gap-1.5">
+          <div className="grid min-w-0 gap-1.5">
             <Label htmlFor="message">{t.enquiry.message}</Label>
-            <Textarea id="message" rows={4} {...form.register("message")} />
+            <Textarea id="message" rows={4} className="w-full min-w-0" {...form.register("message")} />
           </div>
-          <Button type="submit" className="h-12" disabled={form.formState.isSubmitting}>
+          <Button type="submit" className={cn("h-12", compact && "w-full")} disabled={form.formState.isSubmitting}>
             {t.enquiry.submit}
           </Button>
         </form>
