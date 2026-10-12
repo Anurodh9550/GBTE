@@ -9,6 +9,7 @@ import { PartnerWordmark } from "@/components/brand/partner-logo";
 import { PLACEMENT_STATS, SUCCESS_STORIES } from "@/lib/content";
 import { HIRING_COMPANIES } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/shared/reveal";
 
 const MOSAIC = [
   { src: "/photos/psychology.jpg", en: "First role", hi: "पहली भूमिका" },
@@ -168,7 +169,7 @@ export function PlacementsView() {
 
   return (
     <>
-      <section className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:py-16">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.38em] text-brand uppercase">
@@ -212,8 +213,9 @@ export function PlacementsView() {
           </div>
 
           <div className="grid grid-cols-2 gap-2">
-            {MOSAIC.map((frame) => (
-              <figure key={frame.src} className="group relative">
+            {MOSAIC.map((frame, i) => (
+              <Reveal key={frame.src} delay={i * 0.08}>
+              <figure className="group relative">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={frame.src}
@@ -228,12 +230,13 @@ export function PlacementsView() {
                   {hi ? frame.hi : frame.en}
                 </figcaption>
               </figure>
+              </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="border-y border-[#eedfd0] bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="border-y border-[#eedfd0] bg-white">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:grid-cols-4 sm:px-6">
           {PLACEMENT_STATS.map((s) => (
             <div key={s.label}>
@@ -244,9 +247,9 @@ export function PlacementsView() {
             </div>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section id="partners" className="bg-cream scroll-mt-24">
+      <Reveal as="section" hover={false} amount={0.18} id="partners" className="bg-cream scroll-mt-24">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
           <div className="border-b-2 border-navy pb-6">
             <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
@@ -276,8 +279,9 @@ export function PlacementsView() {
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {partners.map((p) => (
-              <article key={p.name} className="overflow-hidden border border-[#eedfd0] bg-white">
+            {partners.map((p, i) => (
+              <Reveal key={p.name} delay={(i % 3) * 0.08}>
+              <article className="h-full overflow-hidden border border-[#eedfd0] bg-white">
                 <div className="relative aspect-[16/10]">
                   <Image
                     src={p.photo}
@@ -295,12 +299,13 @@ export function PlacementsView() {
                   <p className="mt-1 text-sm text-stone-600">{hi ? p.rolesHi : p.roles}</p>
                 </div>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
           <p className="text-center text-[11px] font-semibold tracking-[0.28em] text-stone-400 uppercase">
             {hi ? "वॉल पर नाम" : "On the wall"}
@@ -311,9 +316,9 @@ export function PlacementsView() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
           <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
             {hi ? "करियर सेल" : "Career cell"}
@@ -322,8 +327,9 @@ export function PlacementsView() {
             {hi ? "ड्राइव से पहले तीन कदम" : "Three steps before the drive"}
           </h2>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {STEPS.map((step) => (
-              <article key={step.n}>
+            {STEPS.map((step, i) => (
+              <Reveal key={step.n} delay={i * 0.1}>
+              <article className="h-full">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image src={step.photo} alt="" fill className="object-cover" sizes="(max-width:768px) 100vw, 33vw" />
                 </div>
@@ -331,12 +337,13 @@ export function PlacementsView() {
                 <h3 className="mt-1 text-lg font-semibold text-navy">{hi ? step.titleHi : step.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-stone-600">{hi ? step.bodyHi : step.body}</p>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
           <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-navy pb-4">
             <div>
@@ -352,8 +359,9 @@ export function PlacementsView() {
             </Link>
           </div>
           <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            {PLACED.map((story) => (
-              <article key={story.name}>
+            {PLACED.map((story, i) => (
+              <Reveal key={story.name} delay={i * 0.1}>
+              <article className="h-full">
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
                     src={story.photo}
@@ -369,12 +377,13 @@ export function PlacementsView() {
                 </p>
                 <p className="mt-1 text-sm font-medium text-brand">{story.package}</p>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
@@ -402,7 +411,7 @@ export function PlacementsView() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

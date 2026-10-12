@@ -2,21 +2,24 @@
 
 import Image from "next/image";
 import { useI18n } from "@/components/providers/language-provider";
+import { Reveal } from "@/components/shared/reveal";
 
 export function ConnectMap() {
   const { locale } = useI18n();
   const hi = locale === "hi";
 
   return (
-    <section className="relative isolate min-h-[28rem] overflow-hidden sm:min-h-[34rem] lg:min-h-[40rem]">
-      <Image
-        src="/photos/world-connect.jpg"
-        alt={hi ? "GBTE का वैश्विक कनेक्ट मैप — भारत केंद्र" : "GBTE connect map with India at the centre"}
-        fill
-        className="object-cover object-center"
-        sizes="100vw"
-        priority={false}
-      />
+    <Reveal as="section" hover={false} amount={0.18} className="relative isolate min-h-[28rem] overflow-hidden sm:min-h-[34rem] lg:min-h-[40rem]">
+      <Reveal lift={false} className="absolute inset-0">
+        <Image
+          src="/photos/world-connect.jpg"
+          alt={hi ? "GBTE का वैश्विक कनेक्ट मैप — भारत केंद्र" : "GBTE connect map with India at the centre"}
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority={false}
+        />
+      </Reveal>
 
       <div className="relative z-10 flex min-h-[28rem] w-full flex-col items-start px-6 pt-6 sm:min-h-[34rem] sm:px-10 sm:pt-8 lg:min-h-[40rem] lg:px-16 lg:pt-10">
         <div className="max-w-md text-left">
@@ -52,6 +55,6 @@ export function ConnectMap() {
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

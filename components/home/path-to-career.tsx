@@ -76,7 +76,7 @@ export function PathToCareer() {
   };
 
   return (
-    <section className="path-mesh relative overflow-hidden py-16 sm:py-20">
+    <Reveal as="section" hover={false} amount={0.18} className="path-mesh relative overflow-hidden py-16 sm:py-20">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <svg className="absolute -top-16 right-[-6rem] h-[28rem] w-[28rem] text-brand/15" viewBox="0 0 400 400" fill="none">
           <circle cx="200" cy="200" r="92" stroke="currentColor" strokeWidth="1" />
@@ -227,6 +227,6 @@ export function PathToCareer() {
           })}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

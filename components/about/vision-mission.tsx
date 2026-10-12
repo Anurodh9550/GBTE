@@ -1,74 +1,68 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useI18n } from "@/components/providers/language-provider";
 import { ABOUT } from "@/lib/content";
+import { Reveal } from "@/components/shared/reveal";
 
 export function VisionMission() {
   const { locale } = useI18n();
   const hi = locale === "hi";
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
+    video.play().catch(() => {});
+  }, []);
 
   return (
-    <section className="relative overflow-hidden bg-cream py-20 sm:py-24">
+    <Reveal as="section" hover={false} amount={0.18} className="relative overflow-hidden bg-cream py-16 sm:py-20 lg:py-24">
+      <Reveal lift={false} className="pointer-events-none absolute inset-0">
       <video
+        ref={videoRef}
         src="/videos/vision-globe.mp4"
-        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.12] object-cover object-center"
+        className="h-full w-full object-cover opacity-[0.16]"
         muted
         loop
-        autoPlay
         playsInline
-        preload="auto"
+        preload="metadata"
         aria-hidden
       />
-      <div className="pointer-events-none absolute inset-0 bg-cream/55" aria-hidden />
+      </Reveal>
+      <div className="pointer-events-none absolute inset-0 bg-cream/82" aria-hidden />
 
-      <div className="relative mx-auto grid max-w-7xl gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:gap-24 lg:py-8">
-        <article className="max-w-md">
-          <div className="relative">
-            <span className="pointer-events-none absolute -left-3 -top-10 select-none font-serif text-[7.5rem] leading-none text-brand/20 sm:-left-5 sm:text-[9rem]">
-              “
-            </span>
-            <p className="relative text-2xl font-semibold text-brand sm:text-3xl">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid items-stretch gap-5 md:gap-6 lg:grid-cols-2 lg:gap-8">
+          <Reveal>
+          <article className="flex h-full flex-col rounded-3xl border border-[#eedfd0] bg-white/90 p-7 shadow-[0_12px_32px_rgba(61,41,24,0.06)] sm:p-9 lg:p-10">
+            <div className="h-1 w-12 rounded-full bg-brand" aria-hidden />
+            <h2 className="mt-5 font-serif text-3xl tracking-tight text-navy sm:text-[2.15rem]">
               {hi ? "हमारी दृष्टि" : "Our Vision"}
+            </h2>
+            <p className="mt-4 max-w-prose text-base leading-8 text-stone-700">
+              {hi ? ABOUT.visionHi : ABOUT.vision}
             </p>
-          </div>
-          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
-            {hi ? "सीखो, अभ्यास करो, भूमिका पाओ" : "Learn, practise and place"}
-          </h2>
-          <p className="mt-5 max-w-sm text-sm leading-7 text-stone-600 sm:text-base">
-            {hi ? ABOUT.visionHi : ABOUT.vision}
-          </p>
-        </article>
+          </article>
+          </Reveal>
 
-        <article className="max-w-sm lg:mt-40 lg:ml-auto">
-          <div className="relative">
-            <span className="pointer-events-none absolute -left-3 -top-10 select-none font-serif text-[7.5rem] leading-none text-[#1f7a32]/25 sm:-left-5 sm:text-[9rem]">
-              “
-            </span>
-            <p className="relative text-2xl font-semibold text-[#1f7a32] sm:text-3xl">
+          <Reveal delay={0.08}>
+          <article className="flex h-full flex-col rounded-3xl border border-[#eedfd0] bg-white/90 p-7 shadow-[0_12px_32px_rgba(61,41,24,0.06)] sm:p-9 lg:p-10">
+            <div className="h-1 w-12 rounded-full bg-cyan" aria-hidden />
+            <h2 className="mt-5 font-serif text-3xl tracking-tight text-navy sm:text-[2.15rem]">
               {hi ? "हमारा मिशन" : "Our Mission"}
+            </h2>
+            <p className="mt-4 max-w-prose text-base leading-8 text-stone-700">
+              {hi ? ABOUT.missionHi : ABOUT.mission}
             </p>
-          </div>
-          <p className="mt-5 text-sm leading-7 text-stone-600 sm:text-base">
-            {hi ? ABOUT.missionHi : ABOUT.mission}
-          </p>
-        </article>
-      </div>
-
-      <article className="relative mx-auto mt-16 max-w-7xl px-4 sm:px-6">
-        <div className="relative max-w-md">
-          <span className="pointer-events-none absolute -left-3 -top-10 select-none font-serif text-[7.5rem] leading-none text-brand/20 sm:-left-5 sm:text-[9rem]">
-            “
-          </span>
-          <p className="relative text-2xl font-semibold text-brand sm:text-3xl">
-            {hi ? "हमारा प्रत्यायन" : "Our Accreditation"}
-          </p>
+          </article>
+          </Reveal>
         </div>
-        <ul className="mt-6 max-w-lg list-disc space-y-2 pl-5 text-sm leading-7 text-stone-600 sm:text-base">
-          {(hi ? ABOUT.accreditationHi : ABOUT.accreditation).map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </article>
-    </section>
+      </div>
+    </Reveal>
   );
 }

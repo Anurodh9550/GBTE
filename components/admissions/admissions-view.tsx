@@ -8,6 +8,7 @@ import { EnquiryForm } from "@/components/forms/enquiry-form";
 import { ADMISSION_STEPS, SCHOLARSHIPS } from "@/lib/content";
 import { CAMPUSES, SITE } from "@/lib/site";
 import { PROGRAMME_KINDS } from "@/lib/courses";
+import { Reveal } from "@/components/shared/reveal";
 
 const ROMAN = ["I", "II", "III", "IV", "V"] as const;
 
@@ -45,15 +46,17 @@ export function AdmissionsView() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden">
-        <Image
-          src="/photos/campus-noida.jpg"
-          alt={hi ? "जीबीटीई नोएडा परिसर" : "GBTE Noida campus"}
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
+      <Reveal as="section" hover={false} amount={0.18} className="relative isolate overflow-hidden">
+        <Reveal lift={false} className="absolute inset-0">
+          <Image
+            src="/photos/campus-noida.jpg"
+            alt={hi ? "जीबीटीई नोएडा परिसर" : "GBTE Noida campus"}
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </Reveal>
         <div className="absolute inset-0 bg-cream/55" aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-b from-cream/50 via-transparent to-cream/70" aria-hidden />
         <div className="relative mx-auto max-w-2xl px-4 py-24 text-center sm:px-6 sm:py-28">
@@ -88,9 +91,9 @@ export function AdmissionsView() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="border-y border-[#eedfd0] bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="border-y border-[#eedfd0] bg-white">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(26rem,32rem)] lg:gap-16 lg:py-20">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
@@ -117,6 +120,7 @@ export function AdmissionsView() {
           </div>
 
           <aside className="min-w-0 lg:sticky lg:top-28 lg:self-start">
+            <Reveal>
             <div className="border border-[#eedfd0] bg-cream/60 p-5 sm:p-8">
               <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
                 {hi ? "फ़ाइल शुरू करें" : "Open your file"}
@@ -137,11 +141,12 @@ export function AdmissionsView() {
                 {SITE.phone}
               </a>
             </div>
+            </Reveal>
           </aside>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 lg:py-20">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
@@ -179,9 +184,9 @@ export function AdmissionsView() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
           <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
             {hi ? "छात्रवृत्ति" : "Scholarships"}
@@ -199,9 +204,9 @@ export function AdmissionsView() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
           <div className="flex flex-col gap-8 border-t border-brand/30 pt-10 md:flex-row md:items-end md:justify-between">
             <div>
@@ -232,7 +237,7 @@ export function AdmissionsView() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

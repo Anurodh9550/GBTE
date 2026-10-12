@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { COURSES } from "@/lib/courses";
 import { useI18n } from "@/components/providers/language-provider";
 import { whatsappLink } from "@/lib/whatsapp";
+import { Reveal } from "@/components/shared/reveal";
 
 export function CounsellingForm() {
   const { t, locale } = useI18n();
@@ -31,6 +32,7 @@ export function CounsellingForm() {
   }
 
   return (
+    <Reveal>
     <form onSubmit={onSubmit} className="grid gap-4 rounded-2xl border bg-white p-6">
       <div className="grid gap-1.5">
         <Label htmlFor="c-name">{t.popup.name}</Label>
@@ -50,5 +52,6 @@ export function CounsellingForm() {
       </div>
       <Button type="submit" className="h-12">{t.popup.cta}</Button>
     </form>
+    </Reveal>
   );
 }

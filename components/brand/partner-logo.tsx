@@ -26,6 +26,30 @@ export function PartnerWordmark({
 }
 
 const WORDMARKS: Record<string, ReactNode> = {
+  "Parimanam Solutions": (
+    <svg viewBox="0 0 210 38" className="h-9 w-auto" aria-label="Parimanam Solutions">
+      <path d="M4 8 L18 8 C24 8 26 12 26 18 C26 24 24 28 18 28 L4 28 Z M9 13 L9 23 L17 23 C20 23 21 21 21 18 C21 15 20 13 17 13 Z" fill="currentColor" />
+      <circle cx="28" cy="10" r="2.5" fill="currentColor" />
+      <text x="36" y="21" fill="currentColor" fontFamily="system-ui, -apple-system, sans-serif" fontSize="15" fontWeight="800" letterSpacing="1">
+        PARIMANAM
+      </text>
+      <text x="36" y="32" fill="currentColor" fontFamily="system-ui, -apple-system, sans-serif" fontSize="8" fontWeight="600" letterSpacing="2.6" opacity="0.85">
+        SOLUTIONS · LMS
+      </text>
+    </svg>
+  ),
+  Parimanam: (
+    <svg viewBox="0 0 170 36" className="h-9 w-auto" aria-label="Parimanam">
+      <circle cx="10" cy="18" r="7" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="10" cy="18" r="3.5" fill="currentColor" />
+      <text x="24" y="24" fill="currentColor" fontFamily="system-ui, -apple-system, sans-serif" fontSize="17" fontWeight="700" letterSpacing="0.8">
+        Parimanam
+      </text>
+      <text x="124" y="15" fill="currentColor" fontFamily="system-ui, -apple-system, sans-serif" fontSize="8" fontWeight="700" letterSpacing="1">
+        LMS
+      </text>
+    </svg>
+  ),
   TCS: (
     <svg viewBox="0 0 120 36" className="h-9 w-auto" aria-label="TCS">
       <text x="4" y="26" fill="currentColor" fontFamily="Georgia, serif" fontSize="22" fontWeight="700" letterSpacing="2">
@@ -135,6 +159,169 @@ const WORDMARKS: Record<string, ReactNode> = {
       </text>
       <text x="2" y="30" fill="currentColor" fontFamily="system-ui" fontSize="11" fontWeight="500" letterSpacing="1.6">
         SCHOOL
+      </text>
+    </svg>
+  ),
+  "Max Healthcare": (
+    <svg viewBox="0 0 180 36" className="h-9 w-auto" aria-label="Max Healthcare">
+      <text x="2" y="16" fill="currentColor" fontFamily="Georgia, serif" fontSize="16" fontWeight="700">
+        MAX
+      </text>
+      <text x="2" y="30" fill="currentColor" fontFamily="system-ui" fontSize="9" letterSpacing="2.4">
+        HEALTHCARE
+      </text>
+    </svg>
+  ),
+  Accenture: (
+    <svg viewBox="0 0 170 36" className="h-9 w-auto" aria-label="Accenture">
+      <text x="2" y="25" fill="currentColor" fontFamily="system-ui" fontSize="16" fontWeight="600" letterSpacing="0.4">
+        accenture
+      </text>
+      <path d="M148 10 L156 22 L148 28" fill="none" stroke="currentColor" strokeWidth="1.6" />
+    </svg>
+  ),
+  "Tech Mahindra": (
+    <svg viewBox="0 0 200 36" className="h-9 w-auto" aria-label="Tech Mahindra">
+      <text x="2" y="16" fill="currentColor" fontFamily="system-ui" fontSize="11" fontWeight="700" letterSpacing="1.6">
+        TECH
+      </text>
+      <text x="2" y="30" fill="currentColor" fontFamily="Georgia, serif" fontSize="14" fontWeight="600">
+        Mahindra
+      </text>
+    </svg>
+  ),
+  Cognizant: (
+    <svg viewBox="0 0 180 36" className="h-9 w-auto" aria-label="Cognizant">
+      <text x="2" y="26" fill="currentColor" fontFamily="Georgia, serif" fontSize="17" fontWeight="600">
+        Cognizant
+      </text>
+    </svg>
+  ),
+  IBM: (
+    <svg viewBox="0 0 90 36" className="h-9 w-auto" aria-label="IBM">
+      <text x="2" y="26" fill="currentColor" fontFamily="Arial Black, system-ui" fontSize="22" fontWeight="800" letterSpacing="3">
+        IBM
+      </text>
+    </svg>
+  ),
+  "Dr Reddy's": (
+    <svg viewBox="0 0 180 36" className="h-9 w-auto" aria-label="Dr Reddy's">
+      <text x="2" y="16" fill="currentColor" fontFamily="Georgia, serif" fontSize="14" fontWeight="700">
+        Dr. Reddy's
+      </text>
+      <text x="2" y="30" fill="currentColor" fontFamily="system-ui" fontSize="9" letterSpacing="2">
+        LABORATORIES
+      </text>
+    </svg>
+  ),
+  Lupin: (
+    <svg viewBox="0 0 120 36" className="h-9 w-auto" aria-label="Lupin">
+      <text x="2" y="26" fill="currentColor" fontFamily="Georgia, serif" fontSize="20" fontWeight="600">
+        Lupin
+      </text>
+    </svg>
+  ),
+  "HDFC Bank": (
+    <svg viewBox="0 0 160 36" className="h-9 w-auto" aria-label="HDFC Bank">
+      <text x="2" y="16" fill="currentColor" fontFamily="system-ui" fontSize="14" fontWeight="800" letterSpacing="2">
+        HDFC
+      </text>
+      <text x="2" y="30" fill="currentColor" fontFamily="system-ui" fontSize="9" letterSpacing="3">
+        BANK
+      </text>
+    </svg>
+  ),
+  Microsoft: (
+    <svg viewBox="0 0 180 36" className="h-9 w-auto" aria-label="Microsoft">
+      <rect x="2" y="8" width="9" height="9" fill="currentColor" />
+      <rect x="13" y="8" width="9" height="9" fill="currentColor" opacity="0.85" />
+      <rect x="2" y="19" width="9" height="9" fill="currentColor" opacity="0.7" />
+      <rect x="13" y="19" width="9" height="9" fill="currentColor" opacity="0.55" />
+      <text x="30" y="25" fill="currentColor" fontFamily="system-ui" fontSize="16" fontWeight="600">
+        Microsoft
+      </text>
+    </svg>
+  ),
+  Google: (
+    <svg viewBox="0 0 140 36" className="h-9 w-auto" aria-label="Google">
+      <text x="2" y="26" fill="currentColor" fontFamily="Georgia, serif" fontSize="20" fontWeight="500">
+        Google
+      </text>
+    </svg>
+  ),
+  AWS: (
+    <svg viewBox="0 0 110 36" className="h-9 w-auto" aria-label="AWS">
+      <text x="2" y="22" fill="currentColor" fontFamily="Arial Black, system-ui" fontSize="18" fontWeight="800">
+        aws
+      </text>
+      <path d="M8 28 Q 40 36 72 28" fill="none" stroke="currentColor" strokeWidth="1.6" />
+    </svg>
+  ),
+  Cisco: (
+    <svg viewBox="0 0 140 36" className="h-9 w-auto" aria-label="Cisco">
+      <text x="2" y="26" fill="currentColor" fontFamily="Georgia, serif" fontSize="20" fontStyle="italic" fontWeight="600">
+        cisco
+      </text>
+    </svg>
+  ),
+  Oracle: (
+    <svg viewBox="0 0 150 36" className="h-9 w-auto" aria-label="Oracle">
+      <rect x="2" y="8" width="118" height="22" rx="11" fill="none" stroke="currentColor" strokeWidth="1.6" />
+      <text x="18" y="25" fill="currentColor" fontFamily="system-ui" fontSize="14" fontWeight="700" letterSpacing="1">
+        ORACLE
+      </text>
+    </svg>
+  ),
+  Tally: (
+    <svg viewBox="0 0 120 36" className="h-9 w-auto" aria-label="Tally">
+      <text x="2" y="26" fill="currentColor" fontFamily="Georgia, serif" fontSize="20" fontWeight="700">
+        Tally
+      </text>
+    </svg>
+  ),
+  Adobe: (
+    <svg viewBox="0 0 130 36" className="h-9 w-auto" aria-label="Adobe">
+      <path d="M6 28 L16 8 L26 28 H21 L16 16 L11 28 Z" fill="currentColor" />
+      <text x="34" y="26" fill="currentColor" fontFamily="system-ui" fontSize="16" fontWeight="700">
+        Adobe
+      </text>
+    </svg>
+  ),
+  Autodesk: (
+    <svg viewBox="0 0 170 36" className="h-9 w-auto" aria-label="Autodesk">
+      <text x="2" y="26" fill="currentColor" fontFamily="system-ui" fontSize="16" fontWeight="600" letterSpacing="0.5">
+        AUTODESK
+      </text>
+    </svg>
+  ),
+  NSDC: (
+    <svg viewBox="0 0 150 36" className="h-9 w-auto" aria-label="NSDC">
+      <text x="2" y="16" fill="currentColor" fontFamily="system-ui" fontSize="14" fontWeight="800" letterSpacing="2">
+        NSDC
+      </text>
+      <text x="2" y="30" fill="currentColor" fontFamily="system-ui" fontSize="8" letterSpacing="1.4">
+        SKILL INDIA
+      </text>
+    </svg>
+  ),
+  Internshala: (
+    <svg viewBox="0 0 180 36" className="h-9 w-auto" aria-label="Internshala">
+      <text x="2" y="26" fill="currentColor" fontFamily="Georgia, serif" fontSize="16" fontWeight="600">
+        internshala
+      </text>
+    </svg>
+  ),
+  Genpact: (
+    <svg viewBox="0 0 150 36" className="h-9 w-auto" aria-label="Genpact">
+      <text x="2" y="26" fill="currentColor" fontFamily="Georgia, serif" fontSize="18" fontWeight="600">
+        Genpact
+      </text>
+    </svg>
+  ),
+  Concentrix: (
+    <svg viewBox="0 0 180 36" className="h-9 w-auto" aria-label="Concentrix">
+      <text x="2" y="26" fill="currentColor" fontFamily="system-ui" fontSize="16" fontWeight="700" letterSpacing="0.4">
+        concentrix
       </text>
     </svg>
   ),

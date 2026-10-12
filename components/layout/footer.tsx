@@ -14,6 +14,7 @@ const ABOUT_LINKS = [
   { href: "/campus", key: "campus" as const },
   { href: "/admissions", key: "admissions" as const },
   { href: "/placements", key: "placements" as const },
+  { href: "/partners", key: "partners" as const },
   { href: "/contact", key: "contact" as const },
 ];
 

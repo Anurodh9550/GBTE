@@ -66,6 +66,7 @@ export const INDIAN_STATES = [
 ] as const;
 
 export const HIRING_COMPANIES = [
+  "Parimanam Solutions",
   "TCS",
   "Wipro",
   "HCL",
@@ -73,9 +74,32 @@ export const HIRING_COMPANIES = [
   "Apollo",
   "Fortis",
   "Medanta",
+  "Max Healthcare",
   "Cipla",
   "Sun Pharma",
+  "Dr Reddy's",
+  "Lupin",
   "Deloitte",
+  "Accenture",
+  "Tech Mahindra",
+  "Cognizant",
+  "IBM",
+  "HDFC Bank",
   "Kendriya Vidyalaya",
   "UP Govt. School",
+] as const;
+
+export const SERVICE_PROVIDERS = [
+  "Microsoft",
+  "Google",
+  "AWS",
+  "Cisco",
+  "Oracle",
+  "Tally",
+  "Adobe",
+  "Autodesk",
+  "NSDC",
+  "Internshala",
+  "Genpact",
+  "Concentrix",
 ] as const;

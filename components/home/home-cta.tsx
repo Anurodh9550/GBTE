@@ -1,4 +1,5 @@
 "use client";
+import { Reveal } from "@/components/shared/reveal";
 
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
@@ -8,7 +9,7 @@ import { cn } from "@/lib/utils";
 export function HomeCta() {
   const { locale } = useI18n();
   return (
-    <section className="bg-brand">
+    <Reveal as="section" hover={false} amount={0.18} className="bg-brand">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-center">
         <div className="max-w-2xl text-white">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -24,6 +25,6 @@ export function HomeCta() {
           {locale === "hi" ? "संपर्क करें" : "Contact Us"}
         </Link>
       </div>
-    </section>
+    </Reveal>
   );
 }

@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export function Scholarships() {
   const { t, locale } = useI18n();
   return (
-    <section className="py-16 sm:py-20">
+    <Reveal as="section" hover={false} amount={0.18} className="py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading title={t.scholarships.title} subtitle={t.scholarships.subtitle} eyebrow="Aid" />
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -29,6 +29,6 @@ export function Scholarships() {
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

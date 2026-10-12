@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { AnimatedCounter } from "@/components/shared/animated-counter";
+import { Reveal } from "@/components/shared/reveal";
 import { useI18n } from "@/components/providers/language-provider";
 import { STATS } from "@/lib/content";
 import { ABOUT } from "@/lib/content";
@@ -10,9 +11,10 @@ import { ABOUT } from "@/lib/content";
 export function GrowthStory() {
   const { locale } = useI18n();
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <Reveal as="section" hover={false} amount={0.18} className="bg-white py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-stretch gap-8 px-4 sm:px-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-[#eedfd0] bg-[#fff8f2] p-7 shadow-[0_8px_24px_rgba(61,41,24,0.08)] sm:p-8">
+        <Reveal>
+        <div className="h-full rounded-2xl border border-[#eedfd0] bg-[#fff8f2] p-7 shadow-[0_8px_24px_rgba(61,41,24,0.08)] sm:p-8">
           <p className="text-xs font-semibold tracking-[0.22em] text-brand uppercase">Institution</p>
           <h2 className="mt-3 max-w-md text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
             {locale === "hi" ? "डिप्लोमा से करियर तक" : "Powering careers through diploma education"}
@@ -28,21 +30,23 @@ export function GrowthStory() {
             <ArrowRight className="size-4" />
           </Link>
         </div>
+        </Reveal>
 
         <div className="grid grid-cols-2 gap-4">
-          {STATS.map((s) => (
+          {STATS.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.05}>
             <div
-              key={s.label}
-              className="rounded-2xl border border-[#eedfd0] bg-white p-5 shadow-[0_8px_24px_rgba(61,41,24,0.08)] transition hover:shadow-[0_12px_32px_rgba(61,41,24,0.12)] sm:p-6"
+              className="h-full rounded-2xl border border-[#eedfd0] bg-white p-5 shadow-[0_8px_24px_rgba(61,41,24,0.08)] transition hover:shadow-[0_12px_32px_rgba(61,41,24,0.12)] sm:p-6"
             >
               <p className="text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
                 <AnimatedCounter value={s.value} suffix={s.suffix} />
               </p>
               <p className="mt-2 text-sm text-stone-600">{locale === "hi" ? s.labelHi : s.label}</p>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

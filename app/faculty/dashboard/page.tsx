@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Reveal } from "@/components/shared/reveal";
 
 export default function FacultyDashboardPage() {
   const router = useRouter();
@@ -15,8 +16,10 @@ export default function FacultyDashboardPage() {
       <h1 className="text-3xl font-bold text-navy">Faculty portal</h1>
       <p className="mt-2 text-slate-600">Today’s classes, mentees and assessment queue.</p>
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {["4 lectures today", "12 mentees", "8 scripts to evaluate"].map((c) => (
-          <article key={c} className="rounded-2xl border p-5 font-medium text-navy">{c}</article>
+        {["4 lectures today", "12 mentees", "8 scripts to evaluate"].map((c, i) => (
+          <Reveal key={c} delay={i * 0.06}>
+            <article className="h-full rounded-2xl border p-5 font-medium text-navy">{c}</article>
+          </Reveal>
         ))}
       </div>
       <Link href="/" className="mt-8 inline-block text-brand hover:underline">Back to website</Link>

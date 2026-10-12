@@ -35,7 +35,7 @@ export function CourseExplorer({ initialCategory: _initialCategory = "all" }: { 
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <section id="courses" className="bg-white py-12 sm:py-14">
+    <Reveal as="section" hover={false} amount={0.18} id="courses" className="bg-white py-12 sm:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold tracking-[0.22em] text-brand uppercase">Programmes</p>
@@ -107,7 +107,7 @@ export function CourseExplorer({ initialCategory: _initialCategory = "all" }: { 
           })}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }
 

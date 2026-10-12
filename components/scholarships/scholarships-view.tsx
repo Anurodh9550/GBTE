@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
 import { SCHOLARSHIPS } from "@/lib/content";
 import { SITE } from "@/lib/site";
+import { Reveal } from "@/components/shared/reveal";
 
 const HERO_FILM = [
   { src: "/photos/classroom.jpg", en: "Merit", hi: "मेरिट" },
@@ -67,16 +68,18 @@ export function ScholarshipsView() {
 
   return (
     <>
-      <section className="overflow-hidden bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="overflow-hidden bg-cream">
         <div className="relative isolate">
-          <Image
-            src="/photos/hero-class.jpg"
-            alt=""
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
-          />
+          <Reveal lift={false} className="absolute inset-0">
+            <Image
+              src="/photos/hero-class.jpg"
+              alt=""
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </Reveal>
           <div className="absolute inset-0 bg-cream/70" aria-hidden />
           <div
             className="absolute inset-0 bg-gradient-to-b from-cream/50 via-cream/40 to-cream"
@@ -117,7 +120,8 @@ export function ScholarshipsView() {
           <div className="overflow-hidden">
             <div className="animate-card-marquee flex w-max gap-3 pr-3 hover:[animation-play-state:paused] sm:gap-4 sm:pr-4">
               {film.map((frame, i) => (
-                <figure key={`${frame.src}-${i}`} className="w-44 shrink-0 sm:w-56">
+                <Reveal key={`${frame.src}-${i}`} delay={(i % 5) * 0.08} className="w-44 shrink-0 sm:w-56">
+                <figure className="w-full">
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <Image
                       src={frame.src}
@@ -132,13 +136,14 @@ export function ScholarshipsView() {
                     {hi ? frame.hi : frame.en}
                   </figcaption>
                 </figure>
+                </Reveal>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="border-y border-[#eedfd0] bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="border-y border-[#eedfd0] bg-white">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:grid-cols-4 sm:px-6">
           {SCHOLARSHIPS.map((s) => (
             <div key={s.slug}>
@@ -147,9 +152,9 @@ export function ScholarshipsView() {
             </div>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section id="steps" className="scroll-mt-24 bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} id="steps" className="scroll-mt-24 bg-cream">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
           <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
             {hi ? "प्रक्रिया" : "How an award is confirmed"}
@@ -173,9 +178,9 @@ export function ScholarshipsView() {
             ))}
           </ol>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="awards" className="scroll-mt-24 bg-white">
+      <Reveal as="section" hover={false} amount={0.18} id="awards" className="scroll-mt-24 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
           <div className="border-b-2 border-navy pb-6">
             <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
@@ -188,8 +193,8 @@ export function ScholarshipsView() {
 
           <div className="mt-10 space-y-8">
             {SCHOLARSHIPS.map((s, i) => (
+              <Reveal key={s.slug} delay={i * 0.1}>
               <article
-                key={s.slug}
                 className="grid overflow-hidden border border-[#eedfd0] bg-cream lg:grid-cols-[minmax(16rem,22rem)_minmax(0,1fr)]"
               >
                 <div className="relative min-h-[14rem] lg:min-h-[15rem]">
@@ -227,12 +232,13 @@ export function ScholarshipsView() {
                   </dl>
                 </div>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
           <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
             {hi ? "डेस्क नोट" : "Desk notes"}
@@ -245,9 +251,9 @@ export function ScholarshipsView() {
             ))}
           </ul>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
@@ -278,7 +284,7 @@ export function ScholarshipsView() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

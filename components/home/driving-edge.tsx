@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { BarChart3, Layers, MapPin, Route } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
+import { Reveal } from "@/components/shared/reveal";
 
 const POINTS = [
   {
@@ -47,9 +48,9 @@ export function DrivingEdge() {
   }, []);
 
   return (
-    <section className="relative z-0 isolate overflow-hidden bg-white">
+    <Reveal as="section" hover={false} amount={0.18} className="relative z-0 isolate overflow-hidden bg-white">
       <div className="grid lg:grid-cols-2">
-        <div className="relative min-h-[22rem] overflow-hidden sm:min-h-[28rem] lg:min-h-[36rem]">
+        <Reveal lift={false} className="relative min-h-[22rem] overflow-hidden sm:min-h-[28rem] lg:min-h-[36rem]">
           <video
             ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover"
@@ -67,26 +68,28 @@ export function DrivingEdge() {
             className="pointer-events-none absolute inset-0 bg-linear-to-r from-transparent via-transparent to-[#fff8f2] lg:to-[#fff8f2]"
             aria-hidden
           />
-        </div>
+        </Reveal>
 
         <div className="flex flex-col justify-center bg-[#fff8f2] px-5 py-14 sm:px-10 lg:px-14 lg:py-16">
           <h2 className="max-w-lg text-3xl font-semibold tracking-tight text-navy sm:text-4xl sm:leading-[1.15]">
             {locale === "hi" ? "करियर रूपांतरण में हमारी धार" : "Our Edge in Driving Transformation"}
           </h2>
           <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12">
-            {POINTS.map((item) => {
+            {POINTS.map((item, i) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className="max-w-xs">
+                <Reveal key={item.title} delay={i * 0.14}>
+                <article className="max-w-xs">
                   <Icon className="size-10 stroke-[1.15] text-brand" aria-hidden />
                   <h3 className="mt-4 text-lg font-semibold text-navy">{locale === "hi" ? item.titleHi : item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-stone-600">{locale === "hi" ? item.bodyHi : item.body}</p>
                 </article>
+                </Reveal>
               );
             })}
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

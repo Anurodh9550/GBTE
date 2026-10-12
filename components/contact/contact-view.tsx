@@ -7,6 +7,7 @@ import { useI18n } from "@/components/providers/language-provider";
 import { EnquiryForm } from "@/components/forms/enquiry-form";
 import { CAMPUSES, SITE } from "@/lib/site";
 import { whatsappLink } from "@/lib/whatsapp";
+import { Reveal } from "@/components/shared/reveal";
 
 const campus = CAMPUSES[0];
 
@@ -25,10 +26,11 @@ export function ContactView() {
 
   return (
     <>
-      <section className="relative isolate min-h-[28rem] overflow-hidden bg-cream sm:min-h-[32rem]">
+      <Reveal as="section" hover={false} amount={0.18} className="relative isolate min-h-[28rem] overflow-hidden bg-cream sm:min-h-[32rem]">
         <div className="absolute inset-0 grid grid-cols-3">
-          {HERO_BG.map((frame) => (
-            <div key={frame.src} className="relative min-h-full">
+          {HERO_BG.map((frame, i) => (
+            <Reveal key={frame.src} delay={i * 0.12} className="relative min-h-full">
+            <div className="relative min-h-full">
               <Image
                 src={frame.src}
                 alt={hi ? frame.hi : frame.en}
@@ -38,6 +40,7 @@ export function ContactView() {
                 sizes="33vw"
               />
             </div>
+            </Reveal>
           ))}
         </div>
         <div
@@ -76,9 +79,9 @@ export function ContactView() {
             </a>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="border-y border-[#eedfd0] bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="border-y border-[#eedfd0] bg-white">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
           <div>
             <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] text-brand uppercase">
@@ -124,9 +127,9 @@ export function ContactView() {
             </p>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="map" className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} id="map" className="bg-cream">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
           <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-navy pb-4">
             <div>
@@ -161,9 +164,9 @@ export function ContactView() {
             {hi ? "मुख्यालय · प्रवेश, काउंसलिंग और खाता डेस्क यहीं हैं।" : "Headquarters · admissions, counselling and the accounts desk sit here."}
           </p>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-white">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-16">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
@@ -194,7 +197,7 @@ export function ContactView() {
             <EnquiryForm compact />
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

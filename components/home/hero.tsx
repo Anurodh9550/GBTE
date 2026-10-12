@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/shared/reveal";
 
 const SLIDES = [
   {
@@ -57,7 +58,7 @@ export function Hero() {
       : "Apply Now  ·  Contact Us  ·  Apply Now  ·  ";
 
   return (
-    <section
+    <Reveal as="section" hover={false} amount={0.18}
       className="relative overflow-hidden bg-[#fff8f2]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -65,8 +66,10 @@ export function Hero() {
       aria-label="GBTE admission highlights"
     >
       <div className="relative min-h-[36rem] lg:min-h-[42rem] xl:min-h-[46rem]">
+        <Reveal lift={false} className="absolute inset-0">
         <HeroVideo src="/videos/hero-class.mp4" active={active.video === "/videos/hero-class.mp4"} />
         <HeroVideo src="/videos/hero-campus.mp4" active={active.video === "/videos/hero-campus.mp4"} />
+        </Reveal>
 
         <div
           className="absolute inset-0 bg-linear-to-t from-[#fff8f2] from-25% via-[#fff8f2]/55 via-45% to-transparent to-70% lg:bg-linear-to-r lg:from-[#fff8f2] lg:from-[32%] lg:via-[#fff8f2]/80 lg:via-[48%] lg:to-transparent lg:to-[72%]"
@@ -125,7 +128,7 @@ export function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }
 

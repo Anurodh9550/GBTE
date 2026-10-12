@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/courses",
     "/admissions",
     "/placements",
+    "/partners",
     "/success-stories",
     "/scholarships",
     "/campus",

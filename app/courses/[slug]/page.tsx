@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { EnquiryForm } from "@/components/forms/enquiry-form";
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/site";
+import { Reveal } from "@/components/shared/reveal";
 
 export function generateStaticParams() {
   return COURSES.map((c) => ({ slug: c.slug }));
@@ -35,18 +36,20 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
   return (
     <>
       <JsonLd data={jsonLd} />
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2">
+      <Reveal as="section" hover={false} amount={0.18} className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2">
+        <Reveal>
         <div className="relative min-h-72 overflow-hidden rounded-3xl">
           <Image src={course.image} alt={course.name} fill className="object-cover" sizes="(max-width:1024px) 100vw, 50vw" />
         </div>
+        </Reveal>
         <div>
           <p className="text-sm font-semibold tracking-wide text-brand uppercase">{course.category}</p>
           <h1 className="mt-2 text-4xl font-bold text-navy">{course.name}</h1>
           <p className="mt-4 text-slate-600">{course.overview}</p>
           <dl className="mt-6 grid gap-3 text-sm sm:grid-cols-2">
-            <div className="rounded-xl bg-[#fff8f2] p-4"><dt className="text-stone-500">Duration</dt><dd className="font-semibold">{course.duration}</dd></div>
-            <div className="rounded-xl bg-[#fff8f2] p-4"><dt className="text-stone-500">Seats</dt><dd className="font-semibold">{course.seats}</dd></div>
-            <div className="rounded-xl bg-[#fff8f2] p-4 sm:col-span-2"><dt className="text-stone-500">Eligibility</dt><dd className="font-semibold">{course.eligibility}</dd></div>
+            <Reveal><div className="h-full rounded-xl bg-[#fff8f2] p-4"><dt className="text-stone-500">Duration</dt><dd className="font-semibold">{course.duration}</dd></div></Reveal>
+            <Reveal delay={0.05}><div className="h-full rounded-xl bg-[#fff8f2] p-4"><dt className="text-stone-500">Seats</dt><dd className="font-semibold">{course.seats}</dd></div></Reveal>
+            <Reveal delay={0.1} className="sm:col-span-2"><div className="h-full rounded-xl bg-[#fff8f2] p-4"><dt className="text-stone-500">Eligibility</dt><dd className="font-semibold">{course.eligibility}</dd></div></Reveal>
           </dl>
           <p className="mt-4 text-sm"><strong>What you'll learn:</strong> {course.learn.join(" · ")}</p>
           <p className="mt-2 text-sm"><strong>Jobs you'll unlock:</strong> {course.careers.join(", ")}</p>
@@ -55,7 +58,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
             <Link href={`/compare?add=${course.slug}`} className={cn(buttonVariants({ variant: "outline" }), "h-11 px-5")}>Compare</Link>
           </div>
         </div>
-      </section>
+      </Reveal>
       <EnquiryForm defaultCourse={course.name} />
     </>
   );

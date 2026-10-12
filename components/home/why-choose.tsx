@@ -29,7 +29,7 @@ const ICONS = {
 export function WhyChoose() {
   const { t, locale } = useI18n();
   return (
-    <section className="bg-[#fff8f2] py-16 sm:py-20">
+    <Reveal as="section" hover={false} amount={0.18} className="bg-[#fff8f2] py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           align="left"
@@ -54,6 +54,6 @@ export function WhyChoose() {
           })}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

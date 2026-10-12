@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowRight, FlaskConical, GraduationCap, Route, Trophy } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
+import { Reveal } from "@/components/shared/reveal";
 
 const EDGES = [
   {
@@ -48,7 +49,7 @@ export function OurEdge() {
   }, []);
 
   return (
-    <section className="overflow-hidden bg-[#fff8f2] pt-10 pb-6 sm:pt-12 sm:pb-8 lg:pt-14 lg:pb-8">
+    <Reveal as="section" hover={false} amount={0.18} className="overflow-hidden bg-[#fff8f2] pt-10 pb-6 sm:pt-12 sm:pb-8 lg:pt-14 lg:pb-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-semibold tracking-tight text-navy sm:text-4xl sm:leading-[1.15]">
@@ -65,10 +66,11 @@ export function OurEdge() {
 
         <div className="mt-5 grid items-start gap-5 lg:mt-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-3">
           <div className="grid gap-x-4 gap-y-6 sm:grid-cols-2">
-            {EDGES.map((item) => {
+            {EDGES.map((item, i) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className="max-w-xs">
+                <Reveal key={item.title} delay={i * 0.14}>
+                <article className="max-w-xs">
                   <Icon className="size-7 stroke-[1.2] text-brand" aria-hidden />
                   <h3 className="mt-1.5 text-xl font-semibold text-navy">
                     {locale === "hi" ? item.titleHi : item.title}
@@ -77,11 +79,12 @@ export function OurEdge() {
                     {locale === "hi" ? item.bodyHi : item.body}
                   </p>
                 </article>
+                </Reveal>
               );
             })}
           </div>
 
-          <div className="relative flex min-h-[14rem] -translate-y-4 items-center justify-center overflow-hidden lg:min-h-[22rem] lg:-translate-y-8">
+          <Reveal lift={false} className="relative flex min-h-[14rem] -translate-y-4 items-center justify-center overflow-hidden lg:min-h-[22rem] lg:-translate-y-8">
             <svg className="absolute h-0 w-0" aria-hidden>
               <filter id="gbte-cream-match" colorInterpolationFilters="sRGB">
                 <feComponentTransfer>
@@ -113,9 +116,9 @@ export function OurEdge() {
                   "radial-gradient(ellipse 58% 64% at 50% 48%, transparent 40%, #fff8f2 73%)",
               }}
             />
-          </div>
+          </Reveal>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

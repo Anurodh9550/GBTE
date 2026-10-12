@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
 import { NEWS } from "@/lib/content";
 import { SITE } from "@/lib/site";
+import { Reveal } from "@/components/shared/reveal";
 
 function formatDate(iso: string, hi: boolean) {
   return new Date(`${iso}T00:00:00`).toLocaleDateString(hi ? "hi-IN" : "en-GB", {
@@ -28,7 +29,7 @@ export function NewsArticleView({ slug }: { slug: string }) {
 
   return (
     <>
-      <article className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.12} className="bg-cream">
         <div className="mx-auto max-w-3xl px-4 pt-10 sm:px-6 sm:pt-14">
           <div className="flex items-center justify-between gap-3 border-y-2 border-navy py-2 text-[10px] font-semibold tracking-[0.28em] text-navy uppercase">
             <Link href="/news" className="inline-flex items-center gap-1 hover:text-brand">
@@ -49,6 +50,7 @@ export function NewsArticleView({ slug }: { slug: string }) {
           </p>
         </div>
 
+        <Reveal>
         <div className="relative mx-auto mt-10 aspect-[16/9] max-w-5xl overflow-hidden sm:mt-12">
           <Image
             src={item.image}
@@ -59,6 +61,7 @@ export function NewsArticleView({ slug }: { slug: string }) {
             sizes="(max-width:1024px) 100vw, 1024px"
           />
         </div>
+        </Reveal>
 
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
           <p className="text-lg leading-9 text-stone-700">
@@ -81,16 +84,17 @@ export function NewsArticleView({ slug }: { slug: string }) {
             </Link>
           </div>
         </div>
-      </article>
+      </Reveal>
 
-      <section className="border-t-2 border-navy bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="border-t-2 border-navy bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
             {hi ? "इसी अंक से" : "Also in this issue"}
           </p>
           <div className="mt-8 grid gap-8 sm:grid-cols-3">
-            {related.map((story) => (
-              <Link key={story.slug} href={`/news/${story.slug}`} className="group">
+            {related.map((story, i) => (
+              <Reveal key={story.slug} delay={i * 0.08}>
+              <Link href={`/news/${story.slug}`} className="group">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={story.image}
@@ -105,10 +109,11 @@ export function NewsArticleView({ slug }: { slug: string }) {
                   {hi ? story.titleHi : story.title}
                 </h2>
               </Link>
+              </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

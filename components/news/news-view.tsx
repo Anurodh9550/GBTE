@@ -8,6 +8,7 @@ import { useI18n } from "@/components/providers/language-provider";
 import { NEWS } from "@/lib/content";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/shared/reveal";
 
 const FILM = [
   { src: "/photos/hostel.jpg", en: "Residence", hi: "निवास" },
@@ -58,7 +59,7 @@ export function NewsView() {
 
   return (
     <>
-      <section className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
         <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6 sm:pt-14">
           <div className="flex items-center justify-between gap-3 border-y-2 border-navy py-2.5 text-[10px] font-semibold tracking-[0.28em] text-navy uppercase sm:text-[11px]">
             <span>{hi ? "नोएडा · सेक्टर 63ए" : "Noida · Sector 63A"}</span>
@@ -86,8 +87,9 @@ export function NewsView() {
         </div>
 
         <div className="mx-auto mt-6 grid max-w-6xl grid-cols-2 gap-2 px-4 sm:mt-8 sm:grid-cols-5 sm:px-6">
-          {FILM.map((frame) => (
-            <figure key={frame.src} className="group relative overflow-hidden">
+          {FILM.map((frame, i) => (
+            <Reveal key={frame.src} delay={i * 0.08}>
+            <figure className="group relative overflow-hidden">
               <div className="relative aspect-[4/5] sm:aspect-[3/4]">
                 <Image
                   src={frame.src}
@@ -101,11 +103,12 @@ export function NewsView() {
                 {hi ? frame.hi : frame.en}
               </figcaption>
             </figure>
+            </Reveal>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="border-y border-[#eedfd0] bg-white">
+      <Reveal as="section" hover={false} amount={0.18} className="border-y border-[#eedfd0] bg-white">
         <div className="mx-auto flex max-w-6xl flex-wrap gap-2 px-4 py-4 sm:px-6">
           {FILTERS.map((f) => (
             <button
@@ -123,16 +126,17 @@ export function NewsView() {
             </button>
           ))}
         </div>
-      </section>
+      </Reveal>
 
       {lead ? (
-        <section className="bg-cream">
+        <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
           <div
             className={cn(
               "mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:gap-14 lg:py-16",
               briefs.length ? "lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.9fr)]" : "",
             )}
           >
+            <Reveal>
             <Link href={`/news/${lead.slug}`} className="group min-w-0">
               <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
                 {hi ? "मुख पृष्ठ" : "Lead story"} · {lead.tag}
@@ -161,6 +165,7 @@ export function NewsView() {
                 <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
               </span>
             </Link>
+            </Reveal>
 
             {briefs.length ? (
             <aside className="min-w-0 border-t border-[#eedfd0] pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
@@ -168,8 +173,9 @@ export function NewsView() {
                 {hi ? "इस अंक में" : "In this issue"}
               </p>
               <div className="mt-6 divide-y divide-[#eedfd0]">
-                {briefs.map((item) => (
-                  <Link key={item.slug} href={`/news/${item.slug}`} className="group flex gap-4 py-4 first:pt-0">
+                {briefs.map((item, i) => (
+                  <Reveal key={item.slug} delay={i * 0.08}>
+                  <Link href={`/news/${item.slug}`} className="group flex gap-4 py-4 first:pt-0">
                     <div className="relative h-20 w-24 shrink-0 overflow-hidden">
                       <Image
                         src={item.image}
@@ -188,16 +194,17 @@ export function NewsView() {
                       </h3>
                     </div>
                   </Link>
+                  </Reveal>
                 ))}
               </div>
             </aside>
             ) : null}
           </div>
-        </section>
+        </Reveal>
       ) : null}
 
       {rest.length ? (
-        <section className="bg-white">
+        <Reveal as="section" hover={false} amount={0.18} className="bg-white">
           <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
             <div className="flex items-end justify-between gap-4 border-b-2 border-navy pb-4">
               <div>
@@ -212,10 +219,10 @@ export function NewsView() {
 
             <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((item, i) => (
+                <Reveal key={item.slug} delay={(i % 3) * 0.08} className={cn(i === 0 && rest.length > 1 && "sm:col-span-2 lg:col-span-1")}>
                 <Link
-                  key={item.slug}
                   href={`/news/${item.slug}`}
-                  className={cn("group", i === 0 && rest.length > 1 && "sm:col-span-2 lg:col-span-1")}
+                  className="group"
                 >
                   <div className={cn("relative overflow-hidden", i === 0 && rest.length > 1 ? "aspect-[16/9] lg:aspect-[4/3]" : "aspect-[4/3]")}>
                     <Image
@@ -234,13 +241,14 @@ export function NewsView() {
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-stone-600">{hi ? item.excerptHi : item.excerpt}</p>
                 </Link>
+                </Reveal>
               ))}
             </div>
           </div>
-        </section>
+        </Reveal>
       ) : null}
 
-      <section className="bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">
@@ -268,7 +276,7 @@ export function NewsView() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

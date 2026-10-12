@@ -8,7 +8,7 @@ import { ADMISSION_STEPS } from "@/lib/content";
 export function AdmissionProcess() {
   const { t, locale } = useI18n();
   return (
-    <section className="bg-[#fff8f2] py-16 sm:py-20">
+    <Reveal as="section" hover={false} amount={0.18} className="bg-[#fff8f2] py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading title={t.process.title} subtitle={t.process.subtitle} eyebrow="How to join" />
         <ol className="mt-12 grid gap-4 md:grid-cols-5">
@@ -23,6 +23,6 @@ export function AdmissionProcess() {
           ))}
         </ol>
       </div>
-    </section>
+    </Reveal>
   );
 }

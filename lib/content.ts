@@ -602,22 +602,67 @@ export const CHATBOT_KB = [
 
 export const LEADERSHIP = [
   {
-    role: "Chairman",
-    roleHi: "अध्यक्ष",
-    name: "-----",
+    role: "Chairman & Managing Trustee",
+    roleHi: "अध्यक्ष एवं प्रबंध न्यासी",
     message:
-      "GBTE exists to make rigorous, ethical and employable education reachable for every deserving student in India.",
+      "Gautam Buddha Educational Trust was established with a singular conviction: to make rigorous, ethical and career-defining education accessible to every student across North India.",
     messageHi:
-      "जीबीटीई का उद्देश्य भारत के हर योग्य विद्यार्थी तक कठोर, नैतिक और रोजगारपरक शिक्षा पहुँचाना है।",
+      "गौतम बुद्ध एजुकेशनल ट्रस्ट की स्थापना इस संकल्प के साथ हुई थी कि उत्तर भारत के प्रत्येक विद्यार्थी तक कठोर, नैतिक और करियर-उन्मुख शिक्षा सरलता से पहुँचे।",
   },
   {
-    role: "Director",
-    roleHi: "निदेशक",
-    name: "-------",
+    role: "Director General",
+    roleHi: "महानिदेशक",
     message:
-      "Our classrooms, labs and placement cell work as one system — so diploma holders leave job-ready, not just certificate-ready.",
+      "Our classrooms, advanced laboratories, and Career Development Cell function as one unified ecosystem — ensuring our graduates step out job-ready, not just certified.",
     messageHi:
-      "हमारी कक्षाएँ, लैब और प्लेसमेंट सेल एक प्रणाली के रूप में काम करते हैं — डिप्लोमा धारक नौकरी-तैयार बनकर निकलें।",
+      "हमारी कक्षाएँ, आधुनिक प्रयोगशालाएँ और करियर सेल एक एकीकृत व्यवस्था के रूप में काम करते हैं — ताकि छात्र केवल कागज़ी डिग्री नहीं, बल्कि पहले दिन से काम करने का हुनर लेकर निकलें।",
+  },
+  {
+    role: "Dean — Clinical & Healthcare Alliances",
+    roleHi: "डीन — क्लिनिकल एवं स्वास्थ्य साझेदारी",
+    message:
+      "By integrating hospital ward postings at Apollo, Fortis and Medanta inside our academic calendar, we ensure our pharmacy and paramedical students practice on live clinical protocols.",
+    messageHi:
+      "अपोलो, फोर्टिस और मेदांता के साथ हमारे अस्पताल रोटेशन यह सुनिश्चित करते हैं कि फार्मेसी और पैरामेडिकल छात्र वास्तविक क्लिनिकल माहौल में महारत हासिल करें।",
+  },
+] as const;
+
+export const GOVERNMENT_APPROVALS = [
+  {
+    code: "PCI",
+    title: "Pharmacy Council of India",
+    titleHi: "फार्मेसी काउंसिल ऑफ इंडिया",
+    scope: "Statutory approval under Section 12 for D.Pharm & Pharmacy Education",
+    scopeHi: "डी.फार्म और फार्मेसी शिक्षा के लिए वैधानिक अनुमोदन",
+    badge: "Statutory Healthcare Council",
+    badgeHi: "वैधानिक स्वास्थ्य परिषद",
+  },
+  {
+    code: "BTE UP",
+    title: "Board of Technical Education, UP",
+    titleHi: "प्राविधिक शिक्षा परिषद, उत्तर प्रदेश",
+    scope: "State government board affiliation for curriculum, exams & diploma conferment",
+    scopeHi: "पाठ्यक्रम, परीक्षा एवं राज्य स्तरीय डिप्लोमा के लिए सरकारी संबद्धता",
+    badge: "State Technical Board",
+    badgeHi: "राज्य प्राविधिक बोर्ड",
+  },
+  {
+    code: "NCTE",
+    title: "National Council for Teacher Education",
+    titleHi: "राष्ट्रीय अध्यापक शिक्षा परिषद",
+    scope: "Curriculum & pedagogical standards for D.El.Ed & primary teacher education",
+    scopeHi: "डी.एल.एड एवं प्राथमिक शिक्षण के लिए राष्ट्रीय अध्यापक शिक्षा मानक",
+    badge: "National Educator Body",
+    badgeHi: "राष्ट्रीय शिक्षक शिक्षा निकाय",
+  },
+  {
+    code: "NSDC / NCVET",
+    title: "Skill India & Digital Upskilling",
+    titleHi: "स्किल इंडिया एवं डिजिटल अपस्किलिंग",
+    scope: "AI, Big Data & Cloud curriculum integration via Parimanam LMS Skill Foundry",
+    scopeHi: "परिमाणम एलएमएस स्किल फाउंड्री के तहत एआई और क्लाउड सर्टिफिकेशन",
+    badge: "Skill India Mission",
+    badgeHi: "स्किल इंडिया मिशन",
   },
 ] as const;
 
@@ -682,15 +727,25 @@ export const AWARDS = [
 
 export const ABOUT = {
   vision:
-    "To be North India's most trusted destination for diploma education in pharmacy, teacher training and allied health.",
+    "To become a trusted destination for quality education, empowering students with knowledge, skills, and opportunities for a brighter future.",
   visionHi:
-    "फार्मेसी, शिक्षक प्रशिक्षण और संबद्ध स्वास्थ्य डिप्लोमा के लिए उत्तर भारत का सबसे विश्वसनीय गंतव्य बनना।",
+    "गुणवत्तापूर्ण शिक्षा का एक विश्वसनीय गंतव्य बनना, और विद्यार्थियों को ज्ञान, कौशल तथा उज्जवल भविष्य के अवसरों से सशक्त बनाना।",
   mission:
-    "Deliver PCI, AICTE and NCTE aligned learning, wrap it with counselling and placements, and keep scholarships open for talent from every background.",
+    "To deliver career-oriented education, practical learning, student counselling, and placement support while promoting equal access to educational opportunities.",
   missionHi:
-    "पीसीआई, एआईसीटीई और एनसीटीई संरेखित शिक्षा देना, काउंसलिंग व प्लेसमेंट जोड़ना, और हर पृष्ठभूमि की प्रतिभा के लिए छात्रवृत्ति खुली रखना।",
-  accreditation: ["PCI approved pharmacy pathways", "AICTE guideline aligned professional programmes", "NCTE-oriented teacher education", "University affiliations as notified each session"],
-  accreditationHi: ["पीसीआई अनुमोदित फार्मेसी मार्ग", "एआईसीटीई दिशानिर्देश संरेखित पेशेवर कार्यक्रम", "एनसीटीई-उन्मुख शिक्षक शिक्षा", "प्रत्येक सत्र में अधिसूचित विश्वविद्यालय संबद्धता"],
+    "करियर-उन्मुख शिक्षा, व्यावहारिक शिक्षण, विद्यार्थी काउंसलिंग और प्लेसमेंट सहायता देना, तथा शैक्षणिक अवसरों तक समान पहुँच को बढ़ावा देना।",
+  accreditation: [
+    "Pharmacy Council of India (PCI) — statutory approval for D.Pharm and pharmacy education",
+    "Board of Technical Education, UP — state affiliation for curriculum, exams and diploma conferment",
+    "National Council for Teacher Education (NCTE) — standards for D.El.Ed and primary teacher education",
+    "NSDC / NCVET — Skill India curriculum alignment through the Parimanam LMS Skill Foundry",
+  ],
+  accreditationHi: [
+    "फार्मेसी काउंसिल ऑफ इंडिया (PCI) — डी.फार्म और फार्मेसी शिक्षा के लिए वैधानिक अनुमोदन",
+    "प्राविधिक शिक्षा परिषद, उत्तर प्रदेश — पाठ्यक्रम, परीक्षा और डिप्लोमा के लिए राज्य संबद्धता",
+    "राष्ट्रीय अध्यापक शिक्षा परिषद (NCTE) — डी.एल.एड और प्राथमिक शिक्षण के मानक",
+    "NSDC / NCVET — परिमाणम एलएमएस स्किल फाउंड्री के माध्यम से स्किल इंडिया पाठ्यक्रम संरेखण",
+  ],
 };
 
 export const NOTIFICATIONS = [

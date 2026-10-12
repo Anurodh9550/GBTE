@@ -15,6 +15,7 @@ import { useI18n } from "@/components/providers/language-provider";
 import { SUCCESS_STORIES } from "@/lib/content";
 import { HIRING_COMPANIES } from "@/lib/site";
 import { PartnerWordmark } from "@/components/brand/partner-logo";
+import { Reveal } from "@/components/shared/reveal";
 
 const IMPACT = [
   {
@@ -216,7 +217,7 @@ export function SuccessStories() {
 
   return (
     <>
-      <section className="relative z-0 isolate bg-white py-10 sm:py-12 lg:py-14">
+      <Reveal as="section" hover={false} amount={0.18} className="relative z-0 isolate bg-white py-10 sm:py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-navy sm:text-[2.5rem] sm:leading-tight">
@@ -264,9 +265,9 @@ export function SuccessStories() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="relative z-0 isolate bg-cream pt-16 pb-8 sm:pt-20 sm:pb-10">
+      <Reveal as="section" hover={false} amount={0.18} className="relative z-0 isolate bg-cream pt-16 pb-8 sm:pt-20 sm:pb-10">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-3xl font-semibold tracking-tight text-navy sm:text-[2.6rem] sm:leading-tight">
             {locale === "hi" ? "कहानियाँ जिन्होंने फर्क किया।" : "Stories that made a difference."}
@@ -337,25 +338,27 @@ export function SuccessStories() {
 
                   if (item.type === "story") {
                     return (
+                      <Reveal key={item.title}>
                       <button
-                        key={item.title}
                         type="button"
                         onClick={() => setActive(item.story)}
-                        className="group relative isolate overflow-hidden rounded-2xl text-left"
+                        className="group relative isolate h-full w-full overflow-hidden rounded-2xl text-left"
                       >
                         {inner}
                       </button>
+                      </Reveal>
                     );
                   }
 
                   return (
+                    <Reveal key={item.slug}>
                     <Link
-                      key={item.slug}
                       href={`/news/${item.slug}`}
-                      className="group relative isolate overflow-hidden rounded-2xl"
+                      className="group relative isolate block h-full overflow-hidden rounded-2xl"
                     >
                       {inner}
                     </Link>
+                    </Reveal>
                   );
                 })}
               </div>
@@ -363,9 +366,9 @@ export function SuccessStories() {
           </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="relative z-0 isolate bg-cream pt-8 pb-8 sm:pt-10 sm:pb-10">
+      <Reveal as="section" hover={false} amount={0.18} className="relative z-0 isolate bg-cream pt-8 pb-8 sm:pt-10 sm:pb-10">
         <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
           <div className="text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-navy sm:text-[2.5rem]">
@@ -394,9 +397,9 @@ export function SuccessStories() {
                   {pair.map((story) => {
                     const meta = partnerMeta(story.placement);
                     return (
+                      <Reveal key={story.name}>
                       <article
-                        key={story.name}
-                        className="flex min-h-[300px] flex-col rounded-2xl border border-[#eedfd0] bg-white p-7 text-left shadow-sm sm:min-h-[340px] sm:p-10"
+                        className="flex h-full min-h-[300px] flex-col rounded-2xl border border-[#eedfd0] bg-white p-7 text-left shadow-sm sm:min-h-[340px] sm:p-10"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <QuoteMark />
@@ -434,6 +437,7 @@ export function SuccessStories() {
                           </div>
                         </div>
                       </article>
+                      </Reveal>
                     );
                   })}
                 </div>
@@ -463,7 +467,7 @@ export function SuccessStories() {
             </button>
           </div>
         </div>
-      </section>
+      </Reveal>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent className="sm:max-w-lg">

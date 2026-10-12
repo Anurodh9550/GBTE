@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Reveal } from "@/components/shared/reveal";
 
 export default function StudentDashboardPage() {
   const router = useRouter();
@@ -15,8 +16,10 @@ export default function StudentDashboardPage() {
       <h1 className="text-3xl font-bold text-navy">Student portal</h1>
       <p className="mt-2 text-slate-600">Notifications, LMS shortcuts and placement status.</p>
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {["Attendance 94%", "LMS: 3 assignments due", "Placement profile complete"].map((c) => (
-          <article key={c} className="rounded-2xl border p-5 font-medium text-navy">{c}</article>
+        {["Attendance 94%", "LMS: 3 assignments due", "Placement profile complete"].map((c, i) => (
+          <Reveal key={c} delay={i * 0.06}>
+            <article className="h-full rounded-2xl border p-5 font-medium text-navy">{c}</article>
+          </Reveal>
         ))}
       </div>
       <ul className="mt-8 space-y-2 text-sm text-slate-600">

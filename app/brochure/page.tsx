@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { COURSES } from "@/lib/courses";
 import { SITE } from "@/lib/site";
 import { toast } from "sonner";
+import { Reveal } from "@/components/shared/reveal";
 
 export default function BrochurePage() {
   const [unlocked, setUnlocked] = useState(false);
@@ -58,6 +59,7 @@ export default function BrochurePage() {
           <Button type="submit" className="h-11">Unlock brochure</Button>
         </form>
       ) : (
+        <Reveal>
         <article className="mt-8 rounded-2xl border p-8 print:border-0">
           <p className="text-sm font-semibold tracking-wide text-brand uppercase">{SITE.fullName}</p>
           <h2 className="mt-2 text-2xl font-bold">Admissions Open 2027</h2>
@@ -74,6 +76,7 @@ export default function BrochurePage() {
             Print / Save PDF
           </Button>
         </article>
+        </Reveal>
       )}
     </div>
   );

@@ -7,6 +7,7 @@ import { ChevronDown, Minus, Plus, Search, Star } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
 import { CATEGORIES, COURSES, PROGRAMME_KINDS, courseKind, type Course, type CourseCategory, type CourseKind } from "@/lib/courses";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/shared/reveal";
 
 const DURATIONS = ["6 Months", "1 Year", "2 Years", "3 Years", "4 Years"] as const;
 type SortKey = "relevance" | "rating" | "name";
@@ -92,6 +93,7 @@ export function CourseListing({
         </p>
 
         <div className="mt-6 grid gap-5 lg:grid-cols-[16rem_1fr_17rem]">
+          <Reveal className="h-fit">
           <aside className="h-fit rounded-2xl border border-[#eedfd0] bg-white p-4 shadow-[0_8px_24px_rgba(61,41,24,0.06)]">
             <div className="flex items-center justify-between">
               <p className="text-sm font-semibold text-navy">{locale === "hi" ? "फ़िल्टर" : "All filters"}</p>
@@ -178,6 +180,7 @@ export function CourseListing({
               ) : null}
             </div>
           </aside>
+          </Reveal>
 
           <div>
             <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-[#eedfd0] bg-white px-3 py-2.5 shadow-[0_8px_24px_rgba(61,41,24,0.06)]">
@@ -218,8 +221,9 @@ export function CourseListing({
 
             <div className="mt-3 space-y-4">
               {filtered.length ? (
-                filtered.map((course) => (
-                  <article key={course.slug} className="flex flex-col overflow-hidden rounded-2xl border border-[#eedfd0] bg-white shadow-[0_8px_24px_rgba(61,41,24,0.06)] sm:flex-row">
+                filtered.map((course, i) => (
+                  <Reveal key={course.slug} delay={Math.min(i, 8) * 0.04}>
+                  <article className="flex flex-col overflow-hidden rounded-2xl border border-[#eedfd0] bg-white shadow-[0_8px_24px_rgba(61,41,24,0.06)] sm:flex-row">
                     <div className="relative h-44 w-full shrink-0 sm:h-auto sm:w-56">
                       <Image src={course.image} alt={course.name} fill className="object-cover" sizes="224px" />
                     </div>
@@ -245,6 +249,7 @@ export function CourseListing({
                       </div>
                     </div>
                   </article>
+                  </Reveal>
                 ))
               ) : (
                 <div className="rounded-2xl border border-[#eedfd0] bg-white px-6 py-16 text-center">
@@ -259,6 +264,7 @@ export function CourseListing({
           </div>
 
           <aside className="space-y-4">
+            <Reveal>
             <div className="rounded-2xl border border-[#eedfd0] bg-white p-4 shadow-[0_8px_24px_rgba(61,41,24,0.06)]">
               <p className="text-sm font-semibold text-navy">{locale === "hi" ? "कोर्स खोजें" : "Course search"}</p>
               <p className="mt-1 text-xs text-stone-500">
@@ -277,7 +283,9 @@ export function CourseListing({
                 {locale === "hi" ? "खोजें" : "Search courses"}
               </button>
             </div>
+            </Reveal>
 
+            <Reveal delay={0.06}>
             <div className="rounded-2xl border border-[#eedfd0] bg-white p-4 shadow-[0_8px_24px_rgba(61,41,24,0.06)]">
               <p className="text-sm font-semibold text-navy">{locale === "hi" ? "लोकप्रिय डिप्लोमा" : "Trending diplomas"}</p>
               <ul className="mt-3 space-y-2">
@@ -290,7 +298,9 @@ export function CourseListing({
                 ))}
               </ul>
             </div>
+            </Reveal>
 
+            <Reveal delay={0.12}>
             <div className="rounded-2xl bg-brand p-4 text-white shadow-[0_8px_24px_rgba(232,92,26,0.25)]">
               <p className="text-sm font-semibold">{locale === "hi" ? "सही कोर्स चुनें" : "Need help choosing?"}</p>
               <p className="mt-1 text-xs text-white/85">{locale === "hi" ? "निःशुल्क काउंसलिंग बुक करें।" : "Book free counselling with admissions."}</p>
@@ -298,6 +308,7 @@ export function CourseListing({
                 {locale === "hi" ? "काउंसलिंग" : "Free counselling"}
               </Link>
             </div>
+            </Reveal>
           </aside>
         </div>
       </div>

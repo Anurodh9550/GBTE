@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { Reveal } from "@/components/shared/reveal";
 
 const ACCOUNTS = {
   student: { email: "student@gbte.in", password: "student123", href: "/student/dashboard" },
@@ -30,7 +31,8 @@ export function PortalLogin({ role }: { role: keyof typeof ACCOUNTS }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="mx-auto mt-10 grid max-w-md gap-4 rounded-2xl border p-6">
+    <Reveal className="mx-auto mt-10 max-w-md">
+    <form onSubmit={onSubmit} className="grid gap-4 rounded-2xl border p-6">
       <div className="grid gap-1.5">
         <Label htmlFor="email">Email</Label>
         <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="h-11" />
@@ -42,5 +44,6 @@ export function PortalLogin({ role }: { role: keyof typeof ACCOUNTS }) {
       <Button type="submit" className="h-11">Sign in</Button>
       <p className="text-xs text-slate-500">Demo: {account.email} / {account.password}</p>
     </form>
+    </Reveal>
   );
 }

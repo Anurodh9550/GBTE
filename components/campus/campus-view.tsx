@@ -6,6 +6,7 @@ import { ArrowRight, MapPin, Phone } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
 import { FACILITIES } from "@/lib/content";
 import { CAMPUSES, SITE } from "@/lib/site";
+import { Reveal } from "@/components/shared/reveal";
 
 const SPACE_COPY: Record<string, { body: string; bodyHi: string }> = {
   "Smart Classrooms": {
@@ -51,8 +52,8 @@ export function CampusView() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-white">
-        <div className="relative h-64 overflow-hidden sm:h-80 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[62%]">
+      <Reveal as="section" hover={false} amount={0.18} className="relative overflow-hidden bg-white">
+        <Reveal lift={false} className="relative h-64 overflow-hidden sm:h-80 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[62%]">
           <video
             src="/videos/about-campus.mp4"
             className="absolute inset-0 h-full w-full scale-[1.12] object-cover object-center brightness-[1.15]"
@@ -67,7 +68,7 @@ export function CampusView() {
             className="absolute inset-0 bg-gradient-to-t from-white from-0% via-white/20 via-22% to-transparent to-55% lg:bg-gradient-to-r lg:from-white lg:from-0% lg:via-white/30 lg:via-[8%] lg:to-transparent lg:to-[18%]"
             aria-hidden
           />
-        </div>
+        </Reveal>
 
         <div className="relative mx-auto flex min-h-[22rem] max-w-7xl items-center px-4 py-12 sm:px-6 sm:py-16 lg:min-h-[34rem] lg:py-20">
           <div className="relative z-10 max-w-lg">
@@ -113,9 +114,9 @@ export function CampusView() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="border-y border-[#eedfd0] bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="border-y border-[#eedfd0] bg-cream">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:grid-cols-3 sm:px-6">
           <div className="flex gap-3">
             <MapPin className="mt-0.5 size-5 shrink-0 text-brand" />
@@ -138,9 +139,9 @@ export function CampusView() {
             </div>
           </a>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-white py-16 sm:py-20">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <p className="text-xs font-semibold tracking-[0.22em] text-brand uppercase">
             {hi ? "सुविधाएँ" : "Facilities"}
@@ -159,12 +160,12 @@ export function CampusView() {
               const copy = SPACE_COPY[f.title];
               const featured = i === 0;
               return (
+                <Reveal key={f.title} delay={i * 0.04} className={featured ? "col-span-2 row-span-2" : undefined}>
                 <article
-                  key={f.title}
                   className={
                     featured
-                      ? "relative col-span-2 row-span-2 min-h-[18rem] overflow-hidden rounded-2xl md:min-h-[28rem]"
-                      : "relative min-h-[11rem] overflow-hidden rounded-2xl md:min-h-[13.5rem]"
+                      ? "relative h-full min-h-[18rem] overflow-hidden rounded-2xl md:min-h-[28rem]"
+                      : "relative h-full min-h-[11rem] overflow-hidden rounded-2xl md:min-h-[13.5rem]"
                   }
                 >
                   <Image
@@ -184,17 +185,18 @@ export function CampusView() {
                     ) : null}
                   </div>
                 </article>
+                </Reveal>
               );
             })}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0">
+      <Reveal as="section" hover={false} amount={0.18} className="relative isolate overflow-hidden">
+        <Reveal lift={false} className="absolute inset-0">
           <Image src="/photos/campus-noida.jpg" alt="" fill className="object-cover" sizes="100vw" />
           <div className="absolute inset-0 bg-[#3d2918]/50" />
-        </div>
+        </Reveal>
         <div className="relative mx-auto flex max-w-7xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-lg font-medium text-white sm:text-xl">
@@ -220,7 +222,7 @@ export function CampusView() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

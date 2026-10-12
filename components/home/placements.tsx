@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Briefcase, Building2, Handshake, MessageCircle, Share2 } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
+import { Reveal } from "@/components/shared/reveal";
 
 const TRACKS = [
   {
@@ -110,9 +111,10 @@ function NodeField({ lines }: { lines: readonly string[] }) {
 function TrackCard({ track, locale }: { track: (typeof TRACKS)[number]; locale: string }) {
   const Icon = track.icon;
   return (
+    <Reveal className="w-[17.25rem] shrink-0">
     <Link
       href={track.href}
-      className="group flex h-full w-[17.25rem] shrink-0 flex-col rounded-2xl border border-[#e7d8c8] bg-white transition duration-300 hover:-translate-y-1 hover:border-brand/45 hover:bg-linear-to-b hover:from-[#fff1e6] hover:to-[#f3d5b8] hover:shadow-[0_16px_32px_rgba(232,92,26,0.14)]"
+      className="group flex h-full flex-col rounded-2xl border border-[#e7d8c8] bg-white transition duration-300 hover:border-brand/45 hover:bg-linear-to-b hover:from-[#fff1e6] hover:to-[#f3d5b8] hover:shadow-[0_16px_32px_rgba(232,92,26,0.14)]"
     >
       <div className="relative h-40">
         <NodeField lines={track.lines} />
@@ -129,6 +131,7 @@ function TrackCard({ track, locale }: { track: (typeof TRACKS)[number]; locale: 
         <p className="mt-2 text-sm leading-6 text-stone-600">{locale === "hi" ? track.bodyHi : track.body}</p>
       </div>
     </Link>
+    </Reveal>
   );
 }
 
@@ -158,7 +161,7 @@ export function Placements() {
   };
 
   return (
-    <section className="relative z-0 isolate overflow-x-clip bg-white py-16 sm:py-20">
+    <Reveal as="section" hover={false} amount={0.18} className="relative z-0 isolate overflow-x-clip bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="max-w-2xl">
           <h2 className="text-xl font-semibold tracking-tight text-navy sm:text-2xl lg:text-3xl lg:whitespace-nowrap">
@@ -214,6 +217,6 @@ export function Placements() {
           </button>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

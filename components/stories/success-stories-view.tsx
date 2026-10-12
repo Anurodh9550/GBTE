@@ -7,6 +7,7 @@ import { useI18n } from "@/components/providers/language-provider";
 import { PLACEMENT_STATS, SUCCESS_STORIES } from "@/lib/content";
 import { HIRING_COMPANIES } from "@/lib/site";
 import { PartnerWordmark } from "@/components/brand/partner-logo";
+import { Reveal } from "@/components/shared/reveal";
 
 export function SuccessStoriesView() {
   const { locale } = useI18n();
@@ -15,8 +16,8 @@ export function SuccessStoriesView() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-white">
-        <div className="relative h-64 overflow-hidden sm:h-80 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[62%]">
+      <Reveal as="section" hover={false} amount={0.18} className="relative overflow-hidden bg-white">
+        <Reveal lift={false} className="relative h-64 overflow-hidden sm:h-80 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[62%]">
           <video
             src="/videos/about-learn.mp4"
             className="absolute inset-0 h-full w-full scale-[1.12] object-cover object-center brightness-[1.15]"
@@ -31,7 +32,7 @@ export function SuccessStoriesView() {
             className="absolute inset-0 bg-gradient-to-t from-white from-0% via-white/20 via-22% to-transparent to-55% lg:bg-gradient-to-r lg:from-white lg:from-0% lg:via-white/30 lg:via-[8%] lg:to-transparent lg:to-[18%]"
             aria-hidden
           />
-        </div>
+        </Reveal>
 
         <div className="relative mx-auto flex min-h-[22rem] max-w-7xl items-center px-4 py-12 sm:px-6 sm:py-16 lg:min-h-[34rem] lg:py-20">
           <div className="relative z-10 max-w-lg">
@@ -75,9 +76,9 @@ export function SuccessStoriesView() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="border-y border-[#eedfd0] bg-cream">
+      <Reveal as="section" hover={false} amount={0.18} className="border-y border-[#eedfd0] bg-cream">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:grid-cols-4 sm:px-6">
           {PLACEMENT_STATS.map((s) => (
             <div key={s.label}>
@@ -88,9 +89,9 @@ export function SuccessStoriesView() {
             </div>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-white py-16 sm:py-20">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
@@ -105,6 +106,7 @@ export function SuccessStoriesView() {
                 {hi ? featured.courseHi : featured.course} · {featured.placement} · {featured.package}
               </p>
             </div>
+            <Reveal delay={0.1}>
             <div className="relative min-h-[18rem] overflow-hidden rounded-2xl lg:min-h-[22rem]">
               <Image
                 src={featured.photo}
@@ -114,11 +116,12 @@ export function SuccessStoriesView() {
                 sizes="(max-width:1024px) 100vw, 40vw"
               />
             </div>
+            </Reveal>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-cream py-16 sm:py-20">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
             {hi ? "कहानियाँ जिन्होंने फर्क किया" : "Stories that made a difference"}
@@ -130,10 +133,10 @@ export function SuccessStoriesView() {
           </p>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {SUCCESS_STORIES.map((story) => (
+            {SUCCESS_STORIES.map((story, i) => (
+              <Reveal key={`${story.name}-${story.course}`} delay={i * 0.05}>
               <article
-                key={`${story.name}-${story.course}`}
-                className="flex flex-col overflow-hidden rounded-2xl border border-[#eedfd0] bg-white"
+                className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#eedfd0] bg-white"
               >
                 <div className="relative h-48">
                   <Image
@@ -157,12 +160,13 @@ export function SuccessStoriesView() {
                   </div>
                 </div>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-white py-14 sm:py-16">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <p className="text-center text-xs font-semibold tracking-[0.22em] text-brand uppercase">
             {hi ? "हायरिंग पार्टनर" : "Hiring partners"}
@@ -173,9 +177,9 @@ export function SuccessStoriesView() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-cream py-16">
+      <Reveal as="section" hover={false} amount={0.18} className="bg-cream py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
           <p className="max-w-xl text-2xl font-semibold tracking-tight text-navy">
             {hi ? "अगली सफलता कथा आपकी हो सकती है।" : "The next success story can be yours."}
@@ -196,7 +200,7 @@ export function SuccessStoriesView() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

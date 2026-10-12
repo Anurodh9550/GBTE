@@ -13,6 +13,7 @@ import { useI18n } from "@/components/providers/language-provider";
 import { COURSES } from "@/lib/courses";
 import { INDIAN_STATES } from "@/lib/site";
 import { enquiryWhatsappMessage, whatsappLink } from "@/lib/whatsapp";
+import { Reveal } from "@/components/shared/reveal";
 import { cn } from "@/lib/utils";
 
 const schema = z.object({
@@ -60,7 +61,7 @@ export function EnquiryForm({ compact = false, defaultCourse }: { compact?: bool
   const fieldClass = "h-11 w-full min-w-0";
 
   return (
-    <section id="enquiry" className={compact ? "" : "py-16 sm:py-20"}>
+    <Reveal as="section" hover={false} amount={0.18} id="enquiry" className={compact ? "" : "py-16 sm:py-20"}>
       <div className={compact ? "" : "mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2"}>
         {!compact ? (
           <div>
@@ -72,6 +73,7 @@ export function EnquiryForm({ compact = false, defaultCourse }: { compact?: bool
             </ul>
           </div>
         ) : null}
+        <Reveal className={compact ? "w-full" : undefined}>
         <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid min-w-0 gap-4 rounded-2xl border bg-white p-6 shadow-sm", compact && "w-full p-5 sm:p-6")}>
           {compact ? <h2 className="text-xl font-bold text-navy">{t.enquiry.title}</h2> : null}
           <div className="grid min-w-0 gap-1.5">
@@ -121,7 +123,8 @@ export function EnquiryForm({ compact = false, defaultCourse }: { compact?: bool
             {t.enquiry.submit}
           </Button>
         </form>
+        </Reveal>
       </div>
-    </section>
+    </Reveal>
   );
 }
