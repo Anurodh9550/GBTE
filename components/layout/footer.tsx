@@ -181,13 +181,21 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {SITE.fullName}. {t.footer.rights}
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
             <Link href="/privacy" className="hover:text-brand">
               Privacy
             </Link>
             <Link href="/terms" className="hover:text-brand">
               Terms
             </Link>
+            <a
+              href="/GBET_Grievance%20Redressal%20Policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand"
+            >
+              {locale === "hi" ? "छात्र शिकायत निवारण नीति" : "Student Grievance Redressal Policy"}
+            </a>
           </div>
         </div>
       </div>

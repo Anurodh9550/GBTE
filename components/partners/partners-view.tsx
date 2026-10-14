@@ -590,6 +590,15 @@ export function PartnersView() {
                 ? "गौतम बुद्ध एजुकेशनल ट्रस्ट का एलायंस पार्टनर।"
                 : "Alliance partner of Gautam Buddha Educational Trust."}
             </p>
+            <a
+              href="https://www.ktmarts.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline"
+            >
+              ktmarts.com
+              <ExternalLink className="size-3.5" />
+            </a>
           </article>
           <article id="mskp-technology" className="scroll-mt-28 rounded-2xl border border-[#eedfd0] bg-cream p-6 sm:p-8">
             <p className="text-[11px] font-semibold tracking-[0.22em] text-brand uppercase">

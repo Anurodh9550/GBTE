@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/dialog";
 import { useI18n } from "@/components/providers/language-provider";
 import { SUCCESS_STORIES } from "@/lib/content";
-import { PartnerWordmark } from "@/components/brand/partner-logo";
 import { Reveal } from "@/components/shared/reveal";
 
 const IMPACT = [
@@ -138,6 +137,63 @@ const IMPACT = [
     readMore: false,
   },
 ] as const;
+
+function hideCompanyNames(text: string) {
+  const pairs: [RegExp, string][] = [
+    [/\bApollo Hospitals\b/g, "the hospital"],
+    [/\bApollo radiology\b/g, "hospital radiology"],
+    [/\bApollo\b/g, "the hospital"],
+    [/\bthe Fortis floor\b/g, "the hospital floor"],
+    [/\bFortis theatres\b/g, "hospital theatres"],
+    [/\bat Fortis\b/g, "at the hospital"],
+    [/\bFortis\b/g, "the hospital"],
+    [/\bjoin Medanta radiology\b/g, "join radiology"],
+    [/\bat Medanta\b/g, "at the hospital"],
+    [/\bMedanta\b/g, "the hospital"],
+    [/\bthe TCS interview\b/g, "the interview"],
+    [/a TCS support-automation desk/g, "a support-automation desk"],
+    [/\bTCS\b/g, "the hiring desk"],
+    [/\bonto Infosys\b/g, "onto the role"],
+    [/\bInfosys\b/g, "the hiring desk"],
+    [/a Wipro marketing desk/g, "a marketing desk"],
+    [/a Wipro case clinic/g, "a case clinic"],
+    [/\bWipro\b/g, "the hiring desk"],
+    [/\binto HCL\b/g, "into the role"],
+    [/an HCL tech-drive/g, "a tech-drive"],
+    [/\bHCL\b/g, "the hiring desk"],
+    [/made Cipla feel/g, "made the plant feel"],
+    [/made Cipla a known floor/g, "made the plant a known floor"],
+    [/\bCipla\b/g, "the plant"],
+    [/Deloitte[’']s pace/g, "the hiring pace"],
+    [/\bDeloitte\b/g, "the firm"],
+    [/a Sun Pharma role/g, "a plant role"],
+    [/\bSun Pharma\b/g, "the plant"],
+    [/अपोलो रेडियोलॉजी/g, "अस्पताल रेडियोलॉजी"],
+    [/अपोलो/g, "अस्पताल"],
+    [/फोर्टिस फ्लोर/g, "अस्पताल फ्लोर"],
+    [/फोर्टिस थिएटर/g, "अस्पताल थिएटर"],
+    [/फोर्टिस/g, "अस्पताल"],
+    [/मेदांता रेडियोलॉजी/g, "रेडियोलॉजी"],
+    [/मेदांता लैब/g, "अस्पताल लैब"],
+    [/मेदांता/g, "अस्पताल"],
+    [/टीसीएस राउंड/g, "इंटरव्यू राउंड"],
+    [/टीसीएस ऑटोमेशन/g, "ऑटोमेशन"],
+    [/टीसीएस/g, "हायरिंग डेस्क"],
+    [/इंफोसिस पर/g, "भूमिका पर"],
+    [/इंफोसिस/g, "हायरिंग डेस्क"],
+    [/विप्रो मार्केटिंग/g, "मार्केटिंग"],
+    [/विप्रो केस/g, "केस"],
+    [/विप्रो/g, "हायरिंग डेस्क"],
+    [/सिप्ला/g, "प्लांट"],
+    [/एचसीएल टेक-ड्राइव/g, "टेक-ड्राइव"],
+    [/एचसीएल/g, "हायरिंग डेस्क"],
+    [/डेलॉयट की/g, "हायरिंग की"],
+    [/डेलॉयट/g, "हायरिंग डेस्क"],
+    [/सन फार्मा भूमिका/g, "प्लांट भूमिका"],
+    [/सन फार्मा/g, "प्लांट"],
+  ];
+  return pairs.reduce((out, [pattern, value]) => out.replace(pattern, value), text).replace(/\s{2,}/g, " ");
+}
 
 function partnerMeta(placement: string) {
   if (placement.includes("Apollo")) return { mark: "Apollo", type: "Hospital", typeHi: "अस्पताल" };
@@ -350,21 +406,12 @@ export function SuccessStories() {
                       >
                         <div className="flex items-start justify-between gap-4">
                           <QuoteMark />
-                          <div className="w-44 shrink-0 text-right">
-                            {meta.mark ? (
-                              <PartnerWordmark name={meta.mark} className="h-10 justify-end text-navy" />
-                            ) : (
-                              <p className="text-sm font-semibold tracking-wide text-navy uppercase">
-                                {story.placement}
-                              </p>
-                            )}
-                            <p className="mt-1 text-[11px] font-semibold tracking-[0.14em] text-cyan uppercase">
-                              {locale === "hi" ? meta.typeHi : meta.type}
-                            </p>
-                          </div>
+                          <p className="text-[11px] font-semibold tracking-[0.14em] text-cyan uppercase">
+                            {locale === "hi" ? meta.typeHi : meta.type}
+                          </p>
                         </div>
                         <p className="mt-5 text-sm leading-7 text-stone-600 sm:text-[15px]">
-                          “{locale === "hi" ? story.reviewHi : story.review}”
+                          “{hideCompanyNames(locale === "hi" ? story.reviewHi : story.review)}”
                         </p>
                         <div className="mt-auto flex items-center gap-3 pt-8">
                           <span className="relative size-12 shrink-0 overflow-hidden rounded-full border-2 border-brand/40">
@@ -379,7 +426,7 @@ export function SuccessStories() {
                           <div>
                             <p className="font-semibold text-navy">{locale === "hi" ? story.nameHi : story.name}</p>
                             <p className="text-xs text-stone-500">
-                              {locale === "hi" ? story.courseHi : story.course} · {story.placement}
+                              {locale === "hi" ? story.courseHi : story.course}
                             </p>
                           </div>
                         </div>
