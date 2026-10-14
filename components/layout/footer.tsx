@@ -123,6 +123,23 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
+            <div className="mt-8">
+              <p className="text-xs font-semibold tracking-wide text-brand uppercase">
+                {locale === "hi" ? "नीतियाँ" : "Policies"}
+              </p>
+              <ul className="mt-2 space-y-2.5 text-sm text-stone-600">
+                <li>
+                  <a
+                    href="/GBET_Grievance%20Redressal%20Policy.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-brand"
+                  >
+                    {locale === "hi" ? "छात्र शिकायत निवारण नीति" : "Student Grievance Redressal Policy"}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {COURSE_COLUMNS.map((col, i) => (
