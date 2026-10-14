@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/dialog";
 import { useI18n } from "@/components/providers/language-provider";
 import { SUCCESS_STORIES } from "@/lib/content";
-import { HIRING_COMPANIES } from "@/lib/site";
 import { PartnerWordmark } from "@/components/brand/partner-logo";
 import { Reveal } from "@/components/shared/reveal";
 
@@ -181,8 +180,6 @@ export function SuccessStories() {
   const slides = Array.from({ length: pages }, (_, i) => SUCCESS_STORIES.slice(i * 2, i * 2 + 2));
   const impactPages = Math.ceil(IMPACT.length / 4);
   const impactSlides = Array.from({ length: impactPages }, (_, i) => IMPACT.slice(i * 4, i * 4 + 4));
-  const logosLeft = [...HIRING_COMPANIES, ...HIRING_COMPANIES, ...HIRING_COMPANIES, ...HIRING_COMPANIES];
-  const logosRight = [...logosLeft].reverse();
 
   useEffect(() => {
     if (paused) return;
@@ -217,56 +214,6 @@ export function SuccessStories() {
 
   return (
     <>
-      <Reveal as="section" hover={false} amount={0.18} className="relative z-0 isolate bg-white py-10 sm:py-12 lg:py-14">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-navy sm:text-[2.5rem] sm:leading-tight">
-              {locale === "hi" ? "अस्पताल और उद्योग के साथ साझेदारी" : "Partnering with Hospitals & Industry"}
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-stone-600 sm:text-[15px]">
-              {locale === "hi"
-                ? "हम अस्पताल, डायग्नोस्टिक्स, फार्मेसी, विद्यालय और आईटी नेटवर्क के साथ काम करते हैं ताकि स्नातक पहली भूमिका तक पहुँचें — केवल सर्टिफिकेट नहीं।"
-                : "We partner with hospitals, diagnostics, pharmacy, schools and IT networks to deliver first roles — not only a certificate. Hiring desks span Apollo, Fortis, Medanta, TCS, Wipro, HCL and 100+ partners."}
-            </p>
-            <p className="mt-3 text-sm leading-7 text-stone-600 sm:text-[15px]">
-              {locale === "hi"
-                ? "डिप्लोमा, डिग्री या सर्टिफिकेट — काउंसलिंग, लैब अभ्यास और प्लेसमेंट सेल एक सिस्टम की तरह काम करते हैं।"
-                : "Whether you join through a diploma, degree or certificate, counselling, lab practice and the career cell work as one system."}
-            </p>
-            <Link
-              href="/placements"
-              className="mt-5 inline-flex h-11 items-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(232,92,26,0.28)] hover:bg-brand/90"
-            >
-              {locale === "hi" ? "और जानें" : "Know more"}
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
-        </div>
-
-        <div className="mx-auto mt-8 max-w-7xl px-4 sm:px-6">
-          <div className="relative overflow-hidden">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-24" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-24" />
-            <div className="flex flex-col gap-4">
-              <div className="animate-marquee flex w-max flex-nowrap items-center gap-16 pr-16">
-                {logosLeft.map((name, i) => (
-                  <div key={`left-${name}-${i}`} className="w-44 shrink-0">
-                    <PartnerWordmark name={name} />
-                  </div>
-                ))}
-              </div>
-              <div className="animate-marquee-reverse flex w-max flex-nowrap items-center gap-16 pr-16">
-                {logosRight.map((name, i) => (
-                  <div key={`right-${name}-${i}`} className="w-44 shrink-0">
-                    <PartnerWordmark name={name} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Reveal>
-
       <Reveal as="section" hover={false} amount={0.18} className="relative z-0 isolate bg-cream pt-16 pb-8 sm:pt-20 sm:pb-10">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-3xl font-semibold tracking-tight text-navy sm:text-[2.6rem] sm:leading-tight">

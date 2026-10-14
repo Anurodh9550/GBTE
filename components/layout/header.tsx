@@ -53,7 +53,7 @@ const NAV = [
   { href: "/courses", key: "courses" as const, menu: "courses" as const },
   { href: "/placements", key: "placements" as const },
   { href: "/scholarships", key: "scholarships" as const },
-  { href: "/partners", key: "partners" as const },
+  { href: "/partners", key: "partners" as const, menu: "partners" as const },
   { href: "/news", key: "news" as const },
   { href: "/contact", key: "contact" as const },
 ] as const;
@@ -151,6 +151,24 @@ export const ABOUT_SECTIONS = [
   },
 ] as const;
 
+const PARTNER_LINKS = [
+  {
+    href: "/partners#online-partner",
+    label: "Parimanam Learning Management System (LMS)",
+    labelHi: "परिमाणम लर्निंग मैनेजमेंट सिस्टम (LMS)",
+  },
+  {
+    href: "/partners#kalpna-traders",
+    label: "Kalpna Traders",
+    labelHi: "कल्पना ट्रेडर्स",
+  },
+  {
+    href: "/partners#mskp-technology",
+    label: "MSKP Technology",
+    labelHi: "एमएसकेपी टेक्नोलॉजी",
+  },
+] as const;
+
 function scrollToAboutHash(href: string) {
   const hash = href.split("#")[1];
   if (!hash) return;
@@ -171,27 +189,42 @@ export function Header() {
   const barRef = useRef<HTMLDivElement>(null);
   const aboutTimer = useRef(0);
   const coursesTimer = useRef(0);
+  const partnersTimer = useRef(0);
+  const partnersItemRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
+  const [partnersOpen, setPartnersOpen] = useState(false);
+  const [partnersLeft, setPartnersLeft] = useState(16);
   const [mobileAbout, setMobileAbout] = useState(false);
   const [mobileCourses, setMobileCourses] = useState(false);
+  const [mobilePartners, setMobilePartners] = useState(false);
   const [menuTop, setMenuTop] = useState(112);
   const [pathSnapshot, setPathSnapshot] = useState(pathname);
   if (pathSnapshot !== pathname) {
     setPathSnapshot(pathname);
     setAboutOpen(false);
     setCoursesOpen(false);
+    setPartnersOpen(false);
     setOpen(false);
     setMobileAbout(false);
     setMobileCourses(false);
+    setMobilePartners(false);
   }
 
+  const placePartnersMenu = () => {
+    const rect = partnersItemRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const width = 340;
+    setPartnersLeft(Math.min(Math.max(12, rect.left), window.innerWidth - width - 12));
+  };
   const showAbout = () => {
     window.clearTimeout(aboutTimer.current);
     window.clearTimeout(coursesTimer.current);
+    window.clearTimeout(partnersTimer.current);
     setCoursesOpen(false);
+    setPartnersOpen(false);
     setAboutOpen(true);
   };
   const hideAbout = () => {
@@ -200,17 +233,33 @@ export function Header() {
   const showCourses = () => {
     window.clearTimeout(coursesTimer.current);
     window.clearTimeout(aboutTimer.current);
+    window.clearTimeout(partnersTimer.current);
     setAboutOpen(false);
+    setPartnersOpen(false);
     setCoursesOpen(true);
   };
   const hideCourses = () => {
     coursesTimer.current = window.setTimeout(() => setCoursesOpen(false), 140);
   };
+  const showPartners = () => {
+    window.clearTimeout(partnersTimer.current);
+    window.clearTimeout(aboutTimer.current);
+    window.clearTimeout(coursesTimer.current);
+    placePartnersMenu();
+    setAboutOpen(false);
+    setCoursesOpen(false);
+    setPartnersOpen(true);
+  };
+  const hidePartners = () => {
+    partnersTimer.current = window.setTimeout(() => setPartnersOpen(false), 140);
+  };
   const closeMenus = () => {
     window.clearTimeout(aboutTimer.current);
     window.clearTimeout(coursesTimer.current);
+    window.clearTimeout(partnersTimer.current);
     setAboutOpen(false);
     setCoursesOpen(false);
+    setPartnersOpen(false);
   };
   const goAboutLink = (href: string) => {
     closeMenus();
@@ -239,14 +288,16 @@ export function Header() {
       document.removeEventListener("pointerdown", onPointer);
       window.clearTimeout(aboutTimer.current);
       window.clearTimeout(coursesTimer.current);
+      window.clearTimeout(partnersTimer.current);
     };
   }, []);
 
   useEffect(() => {
-    if (!aboutOpen && !coursesOpen) return;
+    if (!aboutOpen && !coursesOpen && !partnersOpen) return;
     const update = () => {
       const bottom = barRef.current?.getBoundingClientRect().bottom ?? 112;
       setMenuTop(bottom);
+      placePartnersMenu();
     };
     update();
     window.addEventListener("resize", update);
@@ -255,7 +306,7 @@ export function Header() {
       window.removeEventListener("resize", update);
       window.removeEventListener("scroll", update);
     };
-  }, [aboutOpen, coursesOpen]);
+  }, [aboutOpen, coursesOpen, partnersOpen]);
 
   const itemLabel = (item: (typeof NAV)[number]) => {
     if ("en" in item) return locale === "hi" ? item.hi : item.en;
@@ -329,14 +380,18 @@ export function Header() {
             {NAV.map((item) => {
               const active = isActive(pathname, item.href);
               const menu = "menu" in item ? item.menu : null;
-              const opened = menu === "about" ? aboutOpen : menu === "courses" ? coursesOpen : false;
+              const opened = menu === "about" ? aboutOpen : menu === "courses" ? coursesOpen : menu === "partners" ? partnersOpen : false;
+              const show = menu === "about" ? showAbout : menu === "courses" ? showCourses : menu === "partners" ? showPartners : undefined;
+              const hide = menu === "about" ? hideAbout : menu === "courses" ? hideCourses : menu === "partners" ? hidePartners : undefined;
+              const menuId = menu === "about" ? "about-menu" : menu === "courses" ? "courses-menu" : "partners-menu";
               return (
                 <div
                   key={item.href}
+                  ref={menu === "partners" ? partnersItemRef : undefined}
                   className="flex items-center"
-                  onMouseEnter={menu === "about" ? showAbout : menu === "courses" ? showCourses : undefined}
-                  onMouseLeave={menu === "about" ? hideAbout : menu === "courses" ? hideCourses : undefined}
-                  onFocus={menu === "about" ? showAbout : menu === "courses" ? showCourses : undefined}
+                  onMouseEnter={show}
+                  onMouseLeave={hide}
+                  onFocus={show}
                 >
                   <Link
                     href={item.href}
@@ -350,9 +405,9 @@ export function Header() {
                       type="button"
                       className="inline-flex size-7 items-center justify-center rounded-md text-[#3E2B20] hover:text-[#F15A16] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A16]/35"
                       aria-expanded={opened}
-                      aria-controls={menu === "about" ? "about-menu" : "courses-menu"}
+                      aria-controls={menuId}
                       aria-label={locale === "hi" ? `${itemLabel(item)} मेनू` : `${itemLabel(item)} menu`}
-                      onClick={() => (menu === "about" ? (aboutOpen ? closeMenus() : showAbout()) : coursesOpen ? closeMenus() : showCourses())}
+                      onClick={() => (opened ? closeMenus() : show?.())}
                     >
                       <ChevronDown className={cn("size-3.5 transition-transform", opened && "rotate-180")} aria-hidden />
                     </button>
@@ -362,6 +417,20 @@ export function Header() {
                   ) : null}
                   {menu === "courses" && coursesOpen ? (
                     <CoursesMenu locale={locale} menuStyle={menuStyle} onEnter={showCourses} onLeave={hideCourses} onNavigate={closeMenus} />
+                  ) : null}
+                  {menu === "partners" && partnersOpen ? (
+                    <PartnersMenu
+                      locale={locale}
+                      menuStyle={menuStyle}
+                      left={partnersLeft}
+                      onEnter={showPartners}
+                      onLeave={hidePartners}
+                      onNavigate={(href) => {
+                        closeMenus();
+                        setOpen(false);
+                        scrollToAboutHash(href);
+                      }}
+                    />
                   ) : null}
                 </div>
               );
@@ -453,6 +522,48 @@ export function Header() {
                                     </Link>
                                   ))}
                                 </div>
+                              ))}
+                            </div>
+                          ) : null}
+                        </div>
+                      );
+                    }
+                    if (menu === "partners") {
+                      return (
+                        <div key={item.href}>
+                          <div className="flex items-center">
+                            <Link
+                              href={item.href}
+                              onClick={() => setOpen(false)}
+                              className="flex-1 rounded-lg px-3 py-2.5 text-[15px] font-medium text-[#3E2B20] hover:bg-[#FFF8F1] hover:text-[#F15A16]"
+                            >
+                              {itemLabel(item)}
+                            </Link>
+                            <button
+                              type="button"
+                              className="inline-flex size-10 items-center justify-center rounded-lg text-[#3E2B20]"
+                              aria-expanded={mobilePartners}
+                              aria-label={locale === "hi" ? "एलायंस पार्टनर मेनू" : "Alliance Partners menu"}
+                              onClick={() => setMobilePartners((value) => !value)}
+                            >
+                              <ChevronDown className={cn("size-4 transition-transform", mobilePartners && "rotate-180")} aria-hidden />
+                            </button>
+                          </div>
+                          {mobilePartners ? (
+                            <div className="grid gap-1 pb-2 pl-2">
+                              {PARTNER_LINKS.map((link) => (
+                                <Link
+                                  key={link.href}
+                                  href={link.href}
+                                  onClick={() => {
+                                    setOpen(false);
+                                    setMobilePartners(false);
+                                    scrollToAboutHash(link.href);
+                                  }}
+                                  className="block rounded-lg px-3 py-2 text-sm text-stone-600 hover:bg-[#FFF8F1] hover:text-[#F15A16]"
+                                >
+                                  {locale === "hi" ? link.labelHi : link.label}
+                                </Link>
                               ))}
                             </div>
                           ) : null}
@@ -672,6 +783,53 @@ function AboutMenu({
               </div>
             </div>
           </div>
+  );
+}
+
+function PartnersMenu({
+  locale,
+  menuStyle,
+  left,
+  onEnter,
+  onLeave,
+  onNavigate,
+}: {
+  locale: "en" | "hi";
+  menuStyle: { top: number; maxHeight: string };
+  left: number;
+  onEnter: () => void;
+  onLeave: () => void;
+  onNavigate: (href: string) => void;
+}) {
+  return (
+    <div
+      id="partners-menu"
+      role="region"
+      aria-label="Alliance Partners"
+      className="fixed z-50 w-[21.25rem] max-w-[calc(100vw-1.5rem)]"
+      style={{ top: menuStyle.top, left, maxHeight: menuStyle.maxHeight }}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+    >
+      <div className="overflow-hidden rounded-2xl border border-[#E7DFD6] bg-white shadow-[0_16px_40px_rgba(62,43,32,0.12)]">
+        <p className="border-b border-[#E7DFD6] px-4 py-3 text-[11px] font-semibold tracking-[0.18em] text-[#F15A16] uppercase">
+          {locale === "hi" ? "एलायंस पार्टनर" : "Alliance Partners"}
+        </p>
+        <ul className="p-2">
+          {PARTNER_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => onNavigate(link.href)}
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-[#3E2B20] hover:bg-[#FFF8F1] hover:text-[#F15A16]"
+              >
+                {locale === "hi" ? link.labelHi : link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
 

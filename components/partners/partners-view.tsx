@@ -17,8 +17,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useI18n } from "@/components/providers/language-provider";
-import { PartnerWordmark } from "@/components/brand/partner-logo";
-import { HIRING_COMPANIES, SERVICE_PROVIDERS, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
 
@@ -118,8 +117,8 @@ const PARTNERS = [
     about: "Radiology, clinical pathology assistance, and patient ward management rotations for allied health professionals.",
     aboutHi: "रेडियोलॉजी, क्लिनिकल पैथोलॉजी सहायता और अलाइड हेल्थ प्रोफेशनल्स के लिए पेशेंट वार्ड मैनेजमेंट रोटेशन।",
     photo: "/photos/xray.jpg",
-    badge: "Medicity Partner",
-    badgeHi: "मेडीसिटी पार्टनर",
+    badge: "Advanced Care Partner",
+    badgeHi: "एडवांस्ड केयर पार्टनर",
   },
   {
     name: "Max Healthcare",
@@ -311,7 +310,7 @@ const PARTNERS = [
     aboutHi: "डी.एल.एड और शिक्षण अभ्यास — संरचित कक्षा पोस्टिंग, लेसन प्लानिंग और पेडागोजी मेंटरिंग।",
     photo: "/photos/classroom.jpg",
     badge: "Premier School Network",
-    badgeHi: "केंद्रीय विद्यालय नेटवर्क",
+    badgeHi: "प्रमुख विद्यालय नेटवर्क",
   },
   {
     name: "UP Govt. School",
@@ -340,20 +339,20 @@ const FILTER_HI: Record<Filter, string> = {
   Corporate: "कॉर्पोरेट",
 };
 
-const SERVICE_LINES: Record<(typeof SERVICE_PROVIDERS)[number], { en: string; hi: string; tag: string }> = {
-  Microsoft: { en: "Campus licences, Office 365 & IT certification labs", hi: "कैंपस लाइसेंस, ऑफिस 365 और आईटी सर्टिफिकेशन लैब", tag: "Productivity & Cloud" },
-  Google: { en: "Google Workspace for Education & digital interactive classrooms", hi: "वर्कस्पेस फॉर एजुकेशन और डिजिटल इंटरएक्टिव कक्षाएँ", tag: "Digital Classroom" },
-  AWS: { en: "Cloud computing laboratories & AWS Academy learning modules", hi: "क्लाउड कंप्यूटिंग लैब्स और एडब्ल्यूएस एकेडमी लर्निंग", tag: "Cloud Infrastructure" },
-  Cisco: { en: "Networking hardware simulators & CCNA certification prep", hi: "नेटवर्किंग सिम्युलेटर और सीसीएनए सर्टिफिकेशन तैयारी", tag: "Networking" },
-  Oracle: { en: "Enterprise database engines & SQL data administration labs", hi: "डेटाबेस इंजन और एसक्यूएल डेटा एडमिनिस्ट्रेशन लैब", tag: "Database" },
-  Tally: { en: "Tally Prime ERP business accounting software desks", hi: "टैली प्राइम ईआरपी बिजनेस अकाउंटिंग सॉफ्टवेयर डेस्क", tag: "Finance & Accounts" },
-  Adobe: { en: "Creative Cloud design studios for multimedia & UI diplomas", hi: "मल्टीमीडिया और यूआई डिप्लोमा के लिए क्रिएटिव डिजाइन स्टूडियो", tag: "Creative & Design" },
-  Autodesk: { en: "AutoCAD & 3D digital modelling workstations", hi: "ऑटोकैड और 3D डिजिटल मॉडलिंग वर्कस्टेशन", tag: "CAD & Drafting" },
-  NSDC: { en: "National Skill Development Corporation compliant curricula", hi: "स्किल इंडिया और राष्ट्रीय कौशल विकास परिषद से संबद्ध", tag: "Govt. Skill India" },
-  Internshala: { en: "Verified internship postings with the Career Development Cell", hi: "करियर डेवलपमेंट सेल के साथ सत्यापित इंटर्नशिप पोस्टिंग", tag: "Internships" },
-  Genpact: { en: "BPO process training & corporate communication coaching", hi: "बीपीओ प्रोसेस ट्रेनिंग और कॉर्पोरेट कम्युनिकेशन कोचिंग", tag: "Process Training" },
-  Concentrix: { en: "Customer experience & enterprise service-desk workshops", hi: "कस्टमर एक्सपीरियंस और सर्विस-डेस्क वर्कशॉप", tag: "Service Desk" },
-};
+const CAMPUS_TOOLS = [
+  { tag: "Productivity & Cloud", en: "Campus licences, productivity suites & IT certification labs", hi: "कैंपस लाइसेंस, प्रोडक्टिविटी सूट और आईटी सर्टिफिकेशन लैब" },
+  { tag: "Digital Classroom", en: "Education workspace tools & digital interactive classrooms", hi: "शिक्षा वर्कस्पेस टूल्स और डिजिटल इंटरएक्टिव कक्षाएँ" },
+  { tag: "Cloud Infrastructure", en: "Cloud computing laboratories & structured cloud learning modules", hi: "क्लाउड कंप्यूटिंग लैब्स और संरचित क्लाउड लर्निंग मॉड्यूल" },
+  { tag: "Networking", en: "Networking hardware simulators & certification prep", hi: "नेटवर्किंग सिम्युलेटर और सर्टिफिकेशन तैयारी" },
+  { tag: "Database", en: "Enterprise database engines & SQL data administration labs", hi: "डेटाबेस इंजन और एसक्यूएल डेटा एडमिनिस्ट्रेशन लैब" },
+  { tag: "Finance & Accounts", en: "ERP business accounting software desks", hi: "ईआरपी बिजनेस अकाउंटिंग सॉफ्टवेयर डेस्क" },
+  { tag: "Creative & Design", en: "Design studios for multimedia & UI diplomas", hi: "मल्टीमीडिया और यूआई डिप्लोमा के लिए डिजाइन स्टूडियो" },
+  { tag: "CAD & Drafting", en: "CAD & 3D digital modelling workstations", hi: "कैड और 3D डिजिटल मॉडलिंग वर्कस्टेशन" },
+  { tag: "National Skills", en: "National skill-development compliant curricula", hi: "राष्ट्रीय कौशल विकास पाठ्यक्रम के अनुरूप" },
+  { tag: "Internships", en: "Verified internship postings with the Career Development Cell", hi: "करियर डेवलपमेंट सेल के साथ सत्यापित इंटर्नशिप पोस्टिंग" },
+  { tag: "Process Training", en: "BPO process training & corporate communication coaching", hi: "बीपीओ प्रोसेस ट्रेनिंग और कॉर्पोरेट कम्युनिकेशन कोचिंग" },
+  { tag: "Service Desk", en: "Customer experience & enterprise service-desk workshops", hi: "कस्टमर एक्सपीरियंस और सर्विस-डेस्क वर्कशॉप" },
+] as const;
 
 const STATS = [
   { value: "100+", label: "Hiring & Placement Partners", labelHi: "हायरिंग व प्लेसमेंट पार्टनर" },
@@ -371,11 +370,6 @@ export function PartnersView() {
     () => PARTNERS.filter((p) => filter === "All" || p.sector === filter),
     [filter],
   );
-  const wall = [...HIRING_COMPANIES, ...HIRING_COMPANIES];
-  const wallRev = [...wall].reverse();
-  const serviceWall = [...SERVICE_PROVIDERS, ...SERVICE_PROVIDERS];
-  const serviceWallRev = [...serviceWall].reverse();
-
   return (
     <>
       {/* Hero Section */}
@@ -584,32 +578,30 @@ export function PartnersView() {
         </div>
       </Reveal>
 
-      {/* Marquee Wall of Partners */}
-      <Reveal as="section" hover={false} amount={0.18} className="border-y border-[#eedfd0] bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-12">
-          <p className="text-center text-[11px] font-semibold tracking-[0.28em] text-stone-400 uppercase">
-            {hi ? "शीर्ष हायरिंग व एलायंस पार्टनर" : "Premier Alliance & Hiring Network"}
-          </p>
-          <div className="relative mt-6 overflow-hidden">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent sm:w-20" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent sm:w-20" />
-            <div className="flex flex-col gap-4">
-              <div className="animate-marquee flex w-max flex-nowrap items-center gap-16 pr-16">
-                {wall.map((name, i) => (
-                  <div key={`row-a-${name}-${i}`} className="w-40 shrink-0">
-                    <PartnerWordmark name={name} />
-                  </div>
-                ))}
-              </div>
-              <div className="animate-marquee-reverse flex w-max flex-nowrap items-center gap-16 pr-16">
-                {wallRev.map((name, i) => (
-                  <div key={`row-b-${name}-${i}`} className="w-40 shrink-0">
-                    <PartnerWordmark name={name} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      <Reveal as="section" hover={false} amount={0.18} className="border-b border-[#eedfd0] bg-white">
+        <div className="mx-auto grid max-w-6xl gap-5 px-4 py-12 sm:px-6 md:grid-cols-2">
+          <article id="kalpna-traders" className="scroll-mt-28 rounded-2xl border border-[#eedfd0] bg-cream p-6 sm:p-8">
+            <p className="text-[11px] font-semibold tracking-[0.22em] text-brand uppercase">
+              {hi ? "एलायंस पार्टनर" : "Alliance partner"}
+            </p>
+            <h2 className="mt-3 font-serif text-3xl text-navy">Kalpna Traders</h2>
+            <p className="mt-3 text-sm leading-7 text-stone-600">
+              {hi
+                ? "गौतम बुद्ध एजुकेशनल ट्रस्ट का एलायंस पार्टनर।"
+                : "Alliance partner of Gautam Buddha Educational Trust."}
+            </p>
+          </article>
+          <article id="mskp-technology" className="scroll-mt-28 rounded-2xl border border-[#eedfd0] bg-cream p-6 sm:p-8">
+            <p className="text-[11px] font-semibold tracking-[0.22em] text-brand uppercase">
+              {hi ? "एलायंस पार्टनर" : "Alliance partner"}
+            </p>
+            <h2 className="mt-3 font-serif text-3xl text-navy">MSKP Technology</h2>
+            <p className="mt-3 text-sm leading-7 text-stone-600">
+              {hi
+                ? "गौतम बुद्ध एजुकेशनल ट्रस्ट का एलायंस पार्टनर।"
+                : "Alliance partner of Gautam Buddha Educational Trust."}
+            </p>
+          </article>
         </div>
       </Reveal>
 
@@ -656,9 +648,8 @@ export function PartnersView() {
           {/* Partners Grid */}
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {list.map((p, i) => {
-              const hasUrl = "url" in p && Boolean(p.url);
               return (
-                <Reveal key={p.name} delay={(i % 3) * 0.08}>
+                <Reveal key={p.role} delay={(i % 3) * 0.08}>
                 <article
                   className={cn(
                     "group flex flex-col overflow-hidden border border-[#eedfd0] bg-white transition hover:-translate-y-1 hover:border-brand/60 hover:shadow-[0_16px_32px_rgba(232,92,26,0.12)]",
@@ -668,7 +659,7 @@ export function PartnersView() {
                   <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
                     <Image
                       src={p.photo}
-                      alt={p.name}
+                      alt={hi ? p.roleHi : p.role}
                       fill
                       className="object-cover transition duration-700 group-hover:scale-[1.05]"
                       sizes="(max-width:768px) 100vw, 33vw"
@@ -686,31 +677,13 @@ export function PartnersView() {
                   </div>
 
                   <div className="flex flex-1 flex-col px-5 pt-4 pb-5">
-                    <PartnerWordmark name={p.name} className="h-10 justify-start text-navy/85" />
-
-                    {"role" in p && p.role && (
-                      <p className="mt-2 text-[11px] font-semibold text-brand">
-                        {hi ? p.roleHi : p.role}
-                      </p>
-                    )}
+                    <h3 className="text-base font-semibold text-navy">
+                      {hi ? p.roleHi : p.role}
+                    </h3>
 
                     <p className="mt-2 text-sm leading-6 text-stone-600 flex-1">
                       {hi ? p.aboutHi : p.about}
                     </p>
-
-                    {hasUrl && (
-                      <div className="mt-4 pt-3 border-t border-[#eedfd0]">
-                        <a
-                          href={p.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand hover:underline"
-                        >
-                          <span>{hi ? "आधिकारिक वेबसाइट देखें" : "Visit Official Website"}</span>
-                          <ExternalLink className="size-3.5" />
-                        </a>
-                      </div>
-                    )}
                   </div>
                 </article>
                 </Reveal>
@@ -737,37 +710,15 @@ export function PartnersView() {
             </p>
           </div>
 
-          <div className="relative mt-8 overflow-hidden">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent sm:w-20" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent sm:w-20" />
-            <div className="flex flex-col gap-4">
-              <div className="animate-marquee flex w-max flex-nowrap items-center gap-16 pr-16">
-                {serviceWall.map((name, i) => (
-                  <div key={`svc-a-${name}-${i}`} className="w-40 shrink-0">
-                    <PartnerWordmark name={name} />
-                  </div>
-                ))}
-              </div>
-              <div className="animate-marquee-reverse flex w-max flex-nowrap items-center gap-16 pr-16">
-                {serviceWallRev.map((name, i) => (
-                  <div key={`svc-b-${name}-${i}`} className="w-40 shrink-0">
-                    <PartnerWordmark name={name} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
           <div className="mt-10 grid grid-cols-2 gap-px bg-[#eedfd0] sm:grid-cols-3 lg:grid-cols-4">
-            {SERVICE_PROVIDERS.map((name, i) => (
-              <Reveal key={name} delay={(i % 4) * 0.1}>
+            {CAMPUS_TOOLS.map((tool, i) => (
+              <Reveal key={tool.tag} delay={(i % 4) * 0.1}>
               <article className="flex h-full flex-col items-center bg-white px-4 py-6 text-center transition hover:bg-cream/40">
-                <PartnerWordmark name={name} className="h-10 text-navy/75" />
-                <span className="mt-2 inline-block rounded-full bg-cream px-2 py-0.5 text-[9px] font-semibold text-brand uppercase">
-                  {SERVICE_LINES[name].tag}
-                </span>
+                <h3 className="text-sm font-semibold text-navy">
+                  {tool.tag}
+                </h3>
                 <p className="mt-2.5 text-xs leading-5 text-stone-500">
-                  {hi ? SERVICE_LINES[name].hi : SERVICE_LINES[name].en}
+                  {hi ? tool.hi : tool.en}
                 </p>
               </article>
               </Reveal>

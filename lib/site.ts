@@ -88,18 +88,3 @@ export const HIRING_COMPANIES = [
   "Kendriya Vidyalaya",
   "UP Govt. School",
 ] as const;
-
-export const SERVICE_PROVIDERS = [
-  "Microsoft",
-  "Google",
-  "AWS",
-  "Cisco",
-  "Oracle",
-  "Tally",
-  "Adobe",
-  "Autodesk",
-  "NSDC",
-  "Internshala",
-  "Genpact",
-  "Concentrix",
-] as const;

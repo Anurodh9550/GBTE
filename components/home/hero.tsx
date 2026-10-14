@@ -71,13 +71,15 @@ export function Hero() {
         <HeroVideo src="/videos/hero-campus.mp4" active={active.video === "/videos/hero-campus.mp4"} />
         </Reveal>
 
+        <div className="absolute inset-0 bg-[#2a2118]/25" aria-hidden />
         <div
-          className="absolute inset-0 bg-linear-to-t from-[#fff8f2] from-25% via-[#fff8f2]/55 via-45% to-transparent to-70% lg:bg-linear-to-r lg:from-[#fff8f2] lg:from-[32%] lg:via-[#fff8f2]/80 lg:via-[48%] lg:to-transparent lg:to-[72%]"
+          className="absolute inset-0 bg-linear-to-t from-[#fff8f2] from-30% via-[#fff8f2]/80 via-55% to-[#fff8f2]/25 lg:bg-linear-to-r lg:from-[#fff8f2] lg:from-[28%] lg:via-[#fff8f2]/92 lg:via-[46%] lg:to-transparent lg:to-[78%]"
           aria-hidden
         />
 
         <div className="relative z-10 mx-auto flex min-h-[36rem] max-w-7xl items-end px-4 py-10 sm:px-6 lg:min-h-[42rem] lg:items-center lg:py-0 xl:min-h-[46rem]">
-          <div className="max-w-md lg:max-w-lg">
+          <div className="relative max-w-md lg:max-w-lg">
+            <div className="absolute -inset-x-5 -inset-y-8 -z-10 rounded-3xl bg-[#fff8f2]/88 shadow-[0_0_40px_20px_rgba(255,248,242,0.55)] backdrop-blur-[2px] sm:-inset-x-7" aria-hidden />
             <h1 className="font-medium tracking-tight">
               <span className="sr-only">Apply, Learn, Succeed</span>
               <span className="flex flex-col items-start gap-1" role="tablist" aria-label="Hero themes">
@@ -90,7 +92,7 @@ export function Hero() {
                     onClick={() => setIndex(i)}
                     className={cn(
                       "text-left text-5xl leading-[1.08] transition sm:text-6xl lg:text-[4.25rem]",
-                      i === index ? "text-navy" : "text-navy/30 hover:text-navy/60"
+                      i === index ? "text-navy" : "text-navy/50 hover:text-navy/75"
                     )}
                   >
                     {locale === "hi" ? slide.labelHi : slide.label}
@@ -99,7 +101,7 @@ export function Hero() {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-sm text-sm leading-7 text-stone-600 sm:text-base">
+            <p className="mt-6 max-w-sm text-sm leading-7 text-stone-700 sm:text-base">
               {locale === "hi" ? active.bodyHi : active.body}
             </p>
 
