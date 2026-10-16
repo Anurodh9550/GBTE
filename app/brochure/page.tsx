@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,6 +12,10 @@ import { Reveal } from "@/components/shared/reveal";
 export default function BrochurePage() {
   const [unlocked, setUnlocked] = useState(false);
   const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (window.sessionStorage.getItem("gbet-brochure-unlocked") === "1") setUnlocked(true);
+  }, []);
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 

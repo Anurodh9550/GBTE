@@ -13,7 +13,12 @@ export function SiteChrome({ children }: { children: ReactNode }) {
   const online = pathname === "/online" || pathname.startsWith("/online/");
 
   if (online) {
-    return <main id="main" className="flex-1">{children}</main>;
+    return (
+      <>
+        <main id="main" className="flex-1">{children}</main>
+        <Footer />
+      </>
+    );
   }
 
   return (
