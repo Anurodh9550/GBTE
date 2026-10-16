@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/brochure",
     "/compare",
     "/counselling",
+    "/online",
   ];
 
   return [

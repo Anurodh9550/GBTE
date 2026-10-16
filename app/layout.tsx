@@ -1,11 +1,7 @@
 import { Plus_Jakarta_Sans, Noto_Sans_Devanagari, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/components/providers/language-provider";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppButton } from "@/components/widgets/whatsapp-button";
-import { AdmissionChatbot } from "@/components/widgets/chatbot";
-import { CounsellingPopup } from "@/components/widgets/counselling-popup";
+import { SiteChrome } from "@/components/layout/site-chrome";
 import { defaultMetadata, JsonLd } from "@/lib/seo";
 import { SITE, CAMPUSES } from "@/lib/site";
 import "./globals.css";
@@ -67,14 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Skip to main content
           </a>
-          <Header />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <WhatsAppButton />
-          <AdmissionChatbot />
-          <CounsellingPopup />
+          <SiteChrome>{children}</SiteChrome>
           <Toaster />
         </LanguageProvider>
       </body>

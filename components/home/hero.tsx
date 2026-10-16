@@ -7,7 +7,7 @@ import { useI18n } from "@/components/providers/language-provider";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
 
-const WORD_COLORS = ["text-[#e06030]", "text-[#108040]", "text-[#602010]"] as const;
+const WORD_COLORS = ["text-[#ff5a12]", "text-[#14913a]", "text-[#8a3d16]"] as const;
 
 const SLIDES = [
   {
@@ -67,21 +67,22 @@ export function Hero() {
       aria-roledescription="carousel"
       aria-label="GBTE admission highlights"
     >
-      <div className="relative min-h-[32rem] sm:min-h-[36rem] lg:min-h-[42rem] xl:min-h-[46rem]">
+      <div className="relative min-h-[26rem] sm:min-h-[30rem] lg:min-h-[34rem] xl:min-h-[36rem]">
         <Reveal lift={false} className="absolute inset-0">
         <HeroVideo src="/videos/hero-class.mp4" active={active.video === "/videos/hero-class.mp4"} />
         <HeroVideo src="/videos/hero-campus.mp4" active={active.video === "/videos/hero-campus.mp4"} />
         </Reveal>
 
         <div
-          className="absolute inset-0 bg-linear-to-t from-[#fffaf6] from-0% via-[#fff8f2]/72 via-[38%] to-transparent to-[64%] lg:bg-linear-to-r lg:from-[#fffaf6]/88 lg:from-[16%] lg:via-[#fff8f2]/50 lg:via-[34%] lg:to-transparent lg:to-[56%]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.2)_0%,rgba(255,244,232,0.55)_70%,rgba(255,248,242,0.82)_100%)] lg:bg-[linear-gradient(90deg,rgba(255,250,246,0.94)_0%,rgba(255,228,206,0.72)_28%,rgba(255,255,255,0.15)_52%,transparent_68%)]"
           aria-hidden
         />
+        <div className="pointer-events-none absolute -left-10 top-16 size-56 rounded-full bg-[#ff7a32]/35 blur-3xl" aria-hidden />
+        <div className="pointer-events-none absolute bottom-10 left-24 size-48 rounded-full bg-[#2fbf5b]/25 blur-3xl" aria-hidden />
 
-        <div className="relative z-10 mx-auto flex min-h-[32rem] max-w-7xl items-end px-4 pt-8 pb-8 sm:min-h-[36rem] sm:px-6 sm:py-10 lg:min-h-[42rem] lg:items-center lg:py-0 xl:min-h-[46rem]">
+        <div className="relative z-10 mx-auto flex min-h-[26rem] max-w-7xl items-end px-4 pt-6 pb-6 sm:min-h-[30rem] sm:px-6 sm:py-8 lg:min-h-[34rem] lg:items-center lg:py-0 xl:min-h-[36rem]">
           <div className="max-w-md lg:max-w-lg">
             <div className="relative">
-              <div className="pointer-events-none absolute -inset-x-3 -inset-y-4 -z-10 rounded-3xl bg-[#fffaf6]/75 shadow-[0_0_28px_16px_rgba(255,250,246,0.8)] sm:-inset-x-5" aria-hidden />
             <h1 className="font-medium tracking-tight">
               <span className="sr-only">Apply, Learn, Succeed</span>
               <span className="flex flex-col items-start gap-0.5 sm:gap-1" role="tablist" aria-label="Hero themes">
@@ -92,10 +93,14 @@ export function Hero() {
                     role="tab"
                     aria-selected={i === index}
                     onClick={() => setIndex(i)}
+                    onMouseEnter={() => setIndex(i)}
+                    onFocus={() => setIndex(i)}
                     className={cn(
                       "text-left text-[2.65rem] leading-[1.02] transition sm:text-6xl sm:leading-[1.08] lg:text-[4.25rem]",
                       WORD_COLORS[i],
-                      i === index ? "opacity-100" : "opacity-80 hover:opacity-100"
+                      i === index
+                        ? "opacity-100 drop-shadow-[0_6px_18px_rgba(255,255,255,0.9)]"
+                        : "opacity-70 hover:opacity-100"
                     )}
                   >
                     {locale === "hi" ? slide.labelHi : slide.label}
@@ -104,7 +109,7 @@ export function Hero() {
               </span>
             </h1>
 
-            <p className="mt-4 max-w-[18rem] text-sm leading-6 text-[#602010] sm:mt-6 sm:max-w-sm sm:text-base sm:leading-7">
+            <p key={active.id} className="mt-4 max-w-[18rem] text-sm leading-6 font-medium text-[#5c2e14] transition-opacity sm:mt-6 sm:max-w-sm sm:text-base sm:leading-7">
               {locale === "hi" ? active.bodyHi : active.body}
             </p>
             </div>
@@ -156,7 +161,7 @@ function HeroVideo({ src, active }: { src: string; active: boolean }) {
       ref={ref}
       src={src}
       className={cn(
-        "absolute inset-0 h-full w-full object-cover object-[62%_center] transition-opacity duration-700 sm:object-center",
+        "absolute inset-0 h-full w-full object-cover object-[62%_center] brightness-110 saturate-125 contrast-105 transition-opacity duration-700 sm:object-center",
         active ? "opacity-100" : "opacity-0"
       )}
       muted
